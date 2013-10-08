@@ -1,0 +1,1031 @@
+
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>GDI - Building Themes for WordPress</title>
+
+		<meta name="description" content="Girl Develop It framework for easily creating beautiful presentations using HTML in GDI theme. Forked from Hakim El Hattab's reveal.js">
+		<meta name="author" content="Girl Develop It">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/gdilight.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<!-- light editor<link rel="stylesheet" href="lib/css/light.css">-->
+		<!-- dark editor--><link rel="stylesheet" href="lib/css/light.css">
+
+		<!-- If use the PDF print sheet so students can print slides-->
+		
+		<link rel="stylesheet" href="css/print/pdf.css" type="text/css" media="print">
+		<link rel="icon" type="image/x-icon" href="favicon.ico" />
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				
+        <!-- Opening -->
+				<section id="beginning-slide">
+					<h3>Girl Develop It</h3>
+					<h1>Building Themes for WordPress</h1>
+					<p>
+						<small>With Tracy Levesque</small>
+					</p>
+					<p>
+						<small><a href="https://twitter.com/LilJimmi" target="_blank">@LilJimmi</a> &#8226; 
+						<a href="mailto:tracy@yikesinc.com">tracy@yikesinc.com</a> &#8226; 
+						<a href="http://yikesinc.com" target="_blank">yikesinc.com</a></small>
+					</p>
+					
+					<p>
+						Slides located at: <a href="http://thetracyl.com/gdi/building-themes">TheTracyL.com/gdi/building-themes</a>
+					</p>
+				</section>
+				
+				<section>
+					<h2>About you</h2>
+					<h3>Why do you want to build WordPress themes?</h3>
+					<ul>
+						<li>Your name and background</li>
+						<li>Why you're here</li>
+						<li>If you could visit any place in the world, where would you go?</li>
+					</ul>
+				</section>			
+				
+				<section>
+					<h2>About the TAs</h2>
+					<h3>Why do you want to help people build WordPress themes?</h3>
+					<ul>
+						<li>Your name and background</li>
+						<li>Why you're here</li>
+						<li>If you could visit any place in the world, where would you go?</li>
+					</ul>
+				</section>				
+				
+				<section>
+					<h2>About me</h2>
+					<h3>How I got into WordPress</h3>
+					<ul>
+						<li>Co-founded web design and development company, YIKES, Inc. in 1996 with 2 other women</li>
+						<li>Made a WordPress blog for my kid in 2006</li>
+						<li>Hooked ever since</li>
+						<li>Building themes for the past three years</li>
+					</ul>
+				</section>			
+				
+				<section>
+					<h2>The rules</h2>
+					<h3>No question is stupid!</h3>
+					<ul>
+						<li>Raise your hand or speak up at any point and ask anything</li>
+						<li>Grab a TA whenever you need personalized help</li>
+						<li>"Learn and return"</li>
+					</ul>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Day 1</h2>
+					<h3>Today you will learn...</h3>
+					<ul>
+						<li>What WordPress themes are, how to install them and how they're structured</li>
+						<li>How to modify a theme with a child theme</li>
+						<li>How to make theme templates</li>
+						<li>Common WordPress template tags</li>
+						<li>How to use the WordPress Template Hierarchy</li>
+						<li>How to use Starter Themes</li>
+					</ul>
+					
+					<h3>And</h3>
+					<ul>
+						<li>Take a 15 minute break at 3pm</li>
+					</ul>
+					
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Ready?</h2>
+					<h3>Here we go...</h3>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>What are Themes?</h2>
+					<h3>Official description from WordPress.org</h3>
+					<blockquote>
+						Fundamentally, the WordPress Theme system is a way to 'skin' your weblog. Yet, it is more than just a 'skin.' Skinning your site implies that only the design is changed. WordPress Themes can provide much more control over the look and <em>presentation</em> of the material on your website.
+					</blockquote>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Themes are</h2>
+					<h3>Powerful</h3>
+					<p>
+						A theme not only determines how a site looks, it can also add functionality to a site. You can build plugin-like functionality right into a theme.
+					</p>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Themes are</h2>
+					<h3>Often Free</h3>
+					<p>
+						There are 2,033 (and counting) free themes in the official <a href="http://wordpress.org/themes/" target="_blank">WordPress Themes Directory</a>.
+					</p>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Managing Themes</h2>
+					<h3>Appearance > Themes</h3>
+					<p>
+						WordPress currently comes with 3 themes: Twenty Eleven, Twenty Twelve and Twenty Thirteen.
+					</p>
+					<p>
+						Under Appearance > Themes you can see they are both <a href="http://yikesdev.com/gdi1/wp-admin/themes.php" target="_blank">installed</a>. The theme in use is labeled "Current" and the other "Available."
+					</p>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Themes</h2>
+					<h3>Finding new themes</h3>
+					<ul>
+						<li>Searching under the "Install Themes" tab</li>
+						<li>Browsing the <a href="http://wordpress.org/themes/" target="_blank">WordPress Themes Directory</a></li>
+					</ul>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Themes</h2>
+					<h3>Installing themes</h3>
+					<ul>
+						<li>Install right from the "Install Themes" tab</li>
+						<li>Download a theme zip file and install it via the "upload" link</li>
+						<li>Unzip the theme files and upload it via FTP to the<br /> <code>/wp-content/themes</code> folder</li>
+					</ul>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Meet Twenty Thirteen</h2>
+					<h3>The current WordPress default theme</h3>
+					
+					<blockquote>
+						The 2013 theme for WordPress takes us back to the blog, featuring a full range of post formats, each displayed beautifully in their own unique way. Design details abound, starting with a vibrant color scheme and matching header images, beautiful typography and icons, and a flexible layout that looks great on any device, big or small.
+					</blockquote>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>The Files</h2>
+					<h3>WordPress file and folder structure</h3>
+					
+					<p>
+						<img src="images/wpfolders.png" />
+					</p>
+
+					<ul>
+						<li><strong>wp-admin -</strong> Back-end core files, <span class="red">don't touch these!</span></li>
+						<li><strong>wp-content -</strong> Theme, plugin and uploaded files</li>
+						<li><strong>wp-includes -</strong> Front-end core files, <span class="red">don't touch these either!</span></li>
+					</ul>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>The Files</h2>
+					<h3>Where theme files live</h3>
+					<img src="images/folders.jpg" class="right" />
+					<ul>
+						<li>wp-content</li>
+						<ul>
+							<li>plugins</li>
+							<li>themes</li>
+								<ul>
+									<li><span class="green">twentyeleven</span></li>
+									<li><span class="green">twentythirteen</span></li>
+									<li><span class="green">twentytwelve</span></li>
+								</ul>
+						</ul>
+					</ul>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Modifying Themes</h2>
+					<h3>So, now that I know where the theme files live I can just start hacking them, right?</h3>
+					<p>
+						<strong>NO!</strong>
+					</p>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>#1 Rule of WordPress Development</h2>
+					<h3>Never EVER touch WordPress core code.</h3>
+
+					<p>
+						This means do not edit:
+					</p>
+					
+					<ul>
+						<li>WordPress core files</li>
+						<li>Plugin files</li>
+						<li>Theme files</li>
+					</ul>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Why?</h2>
+					
+					<ul>
+						<li>Stuff gets broken</li>
+						<li>Other plugins and themes may not work with your hacks</li>
+						<li>Updates wipe out your changes</li>
+					</ul>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>So how do you customize a WordPress theme?</h2>
+					<h3>You create your own theme that is a "child" of another theme</h3>
+					
+					<ul>
+						<li>Your child theme overrides the design elements you want changed and otherwise falls back to the parent.</li>
+						<li>Your child theme can also modify or add functionality to the parent theme.</li>
+					</ul>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>How it Works</h2>
+					
+					<p><img src="images/folders.png" /></p>
+					
+					<h4>Your child theme's folder is a safe land where you can add css and php files without causing any permanent damage.</h4>
+					
+					<p>
+						If you break something you can just hit undo or remove your file. All parent theme files will remain intact.
+					<p>
+				</section>		
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Making a Child Theme</h2>
+						
+					<h3>We'll make a child theme for default WordPress theme, Twenty Thirteen</h3>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>What Your Child Theme Needs</h2>
+						
+					<h3>In order for your child theme to work it needs 2 things</h3>
+					<h4>Really, it only needs 1 thing, but 2 is cooler</h4>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>What Your Child Theme Needs</h2>
+						
+					<h3>Thing #1 - a style.css file</h3>
+					
+					<p>It tells WordPress to load the parent theme after your theme.</p>
+					
+<pre>
+<code>
+/*
+Theme Name: [Your Theme Name]
+Theme URI: [Your URL]
+Description: The custom theme [Your Theme Name] using the parent theme Twenty Thirteen.
+Author: [You]
+Author URI: [Your URL]
+Template: twentythirteen
+Version: 1
+*/
+
+@import url("../twentythirteen/style.css");
+
+</code>
+</pre>
+					
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>What Your Child Theme Needs</h2>
+						
+					<h3>Thing #1 - a style.css file</h3>
+					
+					<p><img src="images/stylecss.png" /></p>
+				</section>	
+				
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>What Your Child Theme Needs</h2>
+						
+					<h3>Thing #2 - a screenshot</h3>
+					
+					<p>This is the thumbnail image that shows up under <strong>Appearance > Themes</strong> in the WordPress admin.</p>
+					
+					<p><img src="images/screenshotpic.png" /></p>
+				</section>	
+				
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>What Your Child Theme Needs</h2>
+						
+					<h3>Thing #2 - a screenshot</h3>
+					
+					<p>You can find the 600px by 400px screenshot image file, <strong>screenshot.png</strong>,  in <br />
+						<code>/wp-content/themes/twentythirteen</code></p>
+
+					<p>Open the file in your favorite graphics editor, turn it into your own screenshot and save it into your child theme's folder.</p>
+				</section>	
+				
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Upload your theme</h2>
+						
+					<ol>
+					<img src="images/mytheme.png" class="right" />
+						<li>Create a folder for your theme in <code>wp-content/themes</code> (no spaces)</li>
+						<li>Add your 2 theme files (style.css and screenshot) to your theme folder</li>
+					</ol>	
+				</section>	
+				
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Activate your theme</h2>
+					
+					<img src="images/awesome.png" class="right" />
+					<p>
+						After you've added your theme go check out Appearance > Themes in the WP admin.<br /><br />
+						Your child theme is now listed under "Available Themes." Hit activate and now your theme will be in charge.
+					</p>					
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Where We're At Now</h2>
+					
+					<p><img src="images/folders2.png" /></p>
+					
+					<p>
+						The 2 files in your theme illustrate how a child theme's files effect the parent's files -- they either modify and add functionality to its identically named file, or completely overwrite it.
+					<p>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Exercise time!</h2>
+					<h3>Practice making child themes</h3>
+
+					<ul>
+						<li>Create a child theme of Twenty Eleven, Twenty Twelve or Twenty Thirteen</li>
+						<li>Make sure you create a screenshot</li>
+						<li>Activate your theme</li>
+					</ul>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Modifying the Parent Theme</h2>
+					<h3>Making CSS Changes</h3>
+					
+					<p>
+						Your style.css file will override styles in the parent theme's style.css file with the same selectors.
+					<p>
+					
+					<p>
+						<img src="images/inspect-title.png" />
+					</p>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Modifying the Parent Theme</h2>
+					<h3>Making CSS Changes</h3>
+					
+					<p>
+						Example: Changing the size of the header title. The font-size for <code>.site-title</code> is 60px. Use the css selector in your child theme to change it. 
+					<p>
+
+<pre>
+<code>
+.site-title {
+    font-size: 50px;
+}
+
+</code>
+</pre>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Modifying the Parent Theme</h2>
+					<h3>Making Template Changes</h3>
+					
+					<p>
+						First, an introduction to templates...
+					<p>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Templates</h2>
+					<h3>Official description from WordPress.org</h3>
+					<blockquote>
+						Templates are the files which control how your WordPress site will be displayed on the Web.
+					</blockquote>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Templates</h2>
+					<ul>
+						<li>Take the data from the database and display it in a web browser</li>
+						<li>Determines how a webpage or part of a webpage looks</li>
+					</ul>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Twenty Thirteen Template Files</h2>
+					
+					<p>
+						In the twentythirteen folder is all the theme's the template files. You can create your own versions of these files in your child theme.
+					<p>
+					
+					<p><img src="images/2013files.png" /></p>
+				</section>		
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Some common template files</h2>
+
+					<ul>
+						<li><strong>header.php</strong> - The global header for your site</li>
+						<li><strong>footer.php</strong> - The global footer for your site</li>
+						<li><strong>index.php</strong> - The posts (blog) page</li>
+						<li><strong>page.php</strong> - Static pages</li>
+						<li><strong>sidebar.php</strong> - Your sidebar widget areas</li>
+						<li><strong>single.php</strong> - A single post</li>
+					</ul>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Modifying the Parent Theme</h2>
+					<h3>Making template changes</h3>
+					
+					<p>
+						Example: Removing WordPress credit from <code>footer.php</code>
+					<p>
+					
+					<ol>
+						<li>Open <code>footer.php</code> in the twentythirteen folder and save a copy into your theme's folder.</li> 
+						<li>Alter the contents of .site-info and save the file.</li>
+					</ol>
+	
+<pre>
+<code>				
+&lt;div class="site-info"&gt;
+	&lt;?php do_action( 'twentythirteen_credits' ); ?&gt;
+	&lt;a href="&lt;?php echo esc_url( __( 'http://wordpress.org/', 'twentythirteen' ) ); ?&gt;" title="&lt;?php esc_attr_e( 'Semantic Personal Publishing Platform', 'twentythirteen' ); ?&gt;"&gt;&lt;?php printf( __( 'Proudly powered by %s', 'twentythirteen' ), 'WordPress' ); ?&gt;&lt;/a&gt;
+&lt;/div?&gt;&lt;!-- .site-info --&gt;
+</code>
+</pre>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Modifying the Parent Theme</h2>
+					<h3>Making your own templates</h3>
+					
+					<p>
+						Twentythirteen has just one default template, a content area with a right sidebar.<br /> <br /> 
+					</p>
+					
+					<img src="images/templates.png" class="right" />
+					<p>
+						You can make additional templates. Templates you create will appear in the Template drop-down menu on the Page edit screen. 
+					<p>
+				</section>		
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>What a template file needs</h2>
+						
+					<h4>First, a name (this goes at the top of your file)</h4>
+<pre>
+<code>
+&lt;?php
+/*
+Template Name: [Type your template name here]
+*/
+?&gt;
+
+</code>
+</pre>
+
+					<h4>Second, at least these 2 include tags</h4>
+<pre>
+<code>
+&lt;?php get_header(); ?&gt;
+
+&lt;?php get_footer(); ?&gt;
+
+</code>
+</pre>
+					
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Modifying the Parent Theme</h2>
+					<h3>Making your own templates</h3>
+					
+					<p>
+						Example: Create a full-width, no sidebar template.
+					</p>
+
+					<ol>
+						<li>Open <code>page.php</code> in the twentythirteen folder.</li>
+						<li>Rename it <code>page-fullwidth.php</code> and save it into your theme's folder</li>
+						<li>Add the <code>Template Name:</code> to top of the file</li>
+						<li>Remove <code>&lt;?php get_sidebar(); ?&gt;</code></li>
+						<li>Adjust the css to make <code>.entry-content</code> full width.</li>
+					</ol>
+
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Exercise time!</h2>
+					<h3>Practice modifying the parent theme</h3>
+
+					<ul>
+						<li>Make CSS changes to the parent theme with your child theme</li>
+						<li>Make your own version of templates that override the parent theme</li>
+						<li>Add a new template to your theme</li>
+					</ul>
+				</section>	
+				
+
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Template tags</h2>
+						
+					<h4>Template tags let you insert dynamic content into your templates.</h4>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Include tags</h2>
+						
+					<h4>Used in a template to execute the HTML and PHP found in another template</h4>
+<pre>
+<code>
+&lt;?get_search_form(); ?&gt;
+&lt;?get_sidebar(); ?&gt;
+&lt;?comments_template(); ?&gt;
+
+</code>
+</pre>
+
+<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Include_Tags" target="_blank">Include Tags Page</a></p>
+					
+				</section>					
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Include tags</h2>
+					<h3>Using Include tags</h3>
+					
+					<p>
+						Example: Add the search form to the header
+					</p>
+
+					<ol>
+						<li>Open <code>header.php</code> in the twentythirteen folder and save a copy into your theme's folder.</li>
+						<li>Add <code>&lt;?get_search_form(); ?&gt;</code> to the header just below the site description</li>
+					</ol>
+
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Function tags</h2>
+						
+					<h4>Used to display useful WordPress PHP functions</h4>
+<pre>
+<code>
+&lt;?the_title(); ?&gt;
+&lt;?the_content(); ?&gt;
+&lt;?the_permalink(); ?&gt;
+&lt;?the_excerpt(); ?&gt;
+&lt;?get_the_post_thumbnail(); ?&gt;
+
+</code>
+</pre>
+
+<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference" target="_blank">Function Reference</a></p>
+					
+				</section>					
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Function tags</h2>
+					<h3>Using Function tags</h3>
+					
+					<p>
+						Example: Add a copyright to the footer
+					</p>
+
+					<ol>
+						<li>Open <code>footer.php</code> in your theme's folder.</li>
+						<li>Add code to create a copyright line</li>
+					</ol>
+					
+<pre>
+<code>
+Copyright &copy; &lt;?php echo date('Y'); ?&gt; &lt;a href="&lt;?php echo home_url( '/' ); ?&gt;"&gt;&lt;?php bloginfo( 'name' ); ?&gt;&lt;/a&gt;
+
+</code>
+</pre>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Conditional tags</h2>
+						
+					<h4>Used to grab and display content depending on what page it is and the conditions it matches.</h4>
+<pre>
+<code>
+is_front_page()
+is_home()
+is_single() 
+is_page()
+is_category()
+
+</code>
+</pre>
+
+<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Conditional_Tags" target="_blank">Conditional Tags Page</a> and this blog post on <a href="http://www.chipbennett.net/2013/09/14/home-page-and-front-page-and-templates-oh-my/" target="_blank"><code>is_front_page()</code> vs. <code>is_home()</code></a></p>
+					
+				</section>					
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Function tags</h2>
+					<h3>Using Conditional tags</h3>
+					
+					<p>
+						Example: Add credit to the footer that only shows on the home page
+					</p>
+
+					<ol>
+						<li>Open <code>footer.php</code></li>
+						<li>Add code to create a credit line</li>
+					</ol>
+					
+<pre>
+<code>
+&lt;?php
+if(is_front_page()){
+	echo "&lt;p&gt;Web design by [your name here]&lt;/p&gt;";
+}
+?&gt;			
+
+</code>
+</pre>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Exercise time!</h2>
+					<h3>Practice using template tags</h3>
+
+					<ul>
+						<li>Use an include tag. Suggestion: Add the search form to a template</li>
+						<li>Use a function tag. Suggestion: Use the function <code><a href="http://codex.wordpress.org/Template_Tags/bloginfo" target="_blank">bloginfo</a></code> to add the blog description to the footer.</li>
+						<li>Use a conditional tag. Suggestion: A show some text in the header only on the home page</li>
+					</ul>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Handy Template Tags</h2>
+					
+					<h3>get_template_part</h3>
+					<p>
+						get_template_part is a special include tag that allows you to load any other template file into a template. It lets you to reuse code in multiple templates. <br /><br />
+						
+						Important Dev rule #2 <strong>Don't Repeat Yourself</strong>. 
+					</p>
+					
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/get_template_part" target="_blank">get template part</a></p>
+				</section>		
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Handy Template Tags</h2>
+					
+					<h3>get_template_part</h3>
+<pre>
+	<code>&lt;?php get_template_part( 'content', 'none' ); ?&gt;</code>
+
+</pre>
+				<p>
+					Will load a template file named content-none.php
+				</p>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Handy Template Tags</h2>
+					
+					<h3>the_post_thumbnail</h3>
+					
+<pre>
+	<code>&lt;?php the_post_thumbnail('medium'); ?&gt;</code>
+
+</pre>					
+					<p>
+						This will create an <code>img</code> tag for the medium sized version of a post or page's "Featured Image"
+					</p>
+					
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/the_post_thumbnail" target="_blank">the post thumbnail</a></p>
+				</section>	
+				
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Handy Template Tags</h2>
+					
+					<h3>the_post_thumbnail</h3>
+					<p>
+						You can bring up the thumbnail, medium, large, original or a custom size of the featured image. If no size is defined it will default to the thumbnail size.
+					</p>
+					
+<pre>
+<code>
+&lt;?php the_post_thumbnail('thumbnail'); ?&gt;
+&lt;?php the_post_thumbnail('medium'); ?&gt;
+&lt;?php the_post_thumbnail('large'); ?&gt;
+&lt;?php the_post_thumbnail('full'); ?&gt;
+&lt;?php the_post_thumbnail( array(250,100) );  ?&gt;
+
+</code>
+</pre>			
+				</section>	
+				
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Handy Template Tags</h2>
+					
+					<h3>get_template_directory_uri and get_stylesheet_directory_uri</h3>
+					
+					<ul>
+						<li><code>get_template_directory_uri</code> -  Retrieves stylesheet directory address for the current theme.</li>
+						<li><code>get_stylesheet_directory_uri</code> - Retrieves stylesheet directory address for the current theme/child theme.</li>
+					</ul>
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/get_template_directory_uri" target="_blank">get template directory uri</a> and <a href="http://codex.wordpress.org/Function_Reference/get_stylesheet_directory_uri" target="_blank">get stylesheet directory uri</a>
+					</p>
+				</section>				
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Handy Template Tags</h2>
+					
+					<h3>get_template_directory_uri and get_stylesheet_directory_uri</h3>
+					
+					<p>
+						To include images in your theme you can use the code below.
+					</p>
+					
+<pre><code>&lt;img src="&lt;?php echo get_stylesheet_directory_uri(); ?&gt;/images/image.png" /&gt;</code></pre>	
+VS. 
+<pre><code>&lt;img src="http://whatever.com/wp-content/mytheme/images/image.png" /&gt;</code></pre>			
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h3>The WordPress Template Hierarchy</h3>
+					<h4><a href="http://codex.wordpress.org/Template_Hierarchy#The_General_Idea" target="_blank">codex.wordpress.org says:</a></h4>
+					<blockquote>
+						WordPress uses the Query String &mdash; information contained within each link on your web site &mdash; to decide which template or set of templates will be used to display the page.
+					</blockquote>
+				</section>
+
+				<section>
+					<h3>The WordPress Template Hierarchy</h3>
+					<h4>What it is</h4>
+					<p>
+						If you name a template file a certain way, it will automatically apply to a certain page.
+					</p>
+					
+					<p>
+						There's a <a href="http://codex.wordpress.org/Template_Hierarchy#Visual_Overview" target="_blank">chart on WordPress.org</a> that shows how the naming conventions work.
+					</p>
+				</section>
+				
+				<section>					
+					<img src="images/Template_Hierarchy.png" />
+				</section>
+
+				<section>
+					<h3>The WordPress Template Hierarchy</h3>
+					<p>
+						The chart looks confusing, but if you break it down it's really pretty simple. We'll look at the template hierarchy for category archives.
+					</p>
+					
+					<p>
+						<img src="images/cat-archive.png" />
+					</p>
+				</section>
+
+				<section>
+					<h3>The WordPress Template Hierarchy</h3>
+					<h4>How it works</h4>
+					<p>
+						If you name template a file a certain way they will affect the display of a certain page. Just follow the chart to find the correct naming convention.
+					</p>
+					<p>
+						<img src="images/cat-templates.png" />
+					</p>
+				</section>
+
+				<section>
+					<h3>The WordPress Template Hierarchy</h3>
+					<h4>How it works</h4>
+					<p>
+						Custom archive and post templates can be named by id or slug
+						
+						<ul>
+							<li>category-$slug</li>
+							<li>category-$id</li>
+						</ul>
+						<ul>
+							<li>category-kittens</li>
+							<li>category-12</li>
+						</ul>
+					</p>
+					
+					<p><br />Check out this <a href="http://wphierarchy.com/" target="_blank">interactive version of the chart</a></p>
+				</section>			
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>The WordPress Template Hierarchy</h2>
+					
+					<p>
+						Example: Make an archive term template
+					</p>
+
+					<ol>
+						<li>Open <code>category.php</code> in the twentythirteen folder.</li>
+						<li>Rename it <code>category-[slug].php</code> and save it into your theme's folder</li>
+						<li>Modify the template</li>
+					</ol>
+
+				</section>		
+
+				<section>
+					<h3>The WordPress Template Hierarchy</h3>
+					<h4>How it works</h4>
+					<p>
+						<code>index.php</code> is the end of the road. Any page that does not have another template file made for it will use <code>index.php</code> aka the default template for the posts (blog) page.
+					</p>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Exercise time!</h2>
+					<h3>Practice using the WordPress Template Hierarchy</h3>
+
+					<ul>
+						<li>Make a special template for a tag or category you create</li>
+					</ul>
+				</section>	
+
+				<section>
+					<h3>Starter Themes</h3>
+					<p>Child themes are great for modifying existing themes, but you can create your own custom theme with a starter theme.</p>
+					<p>Starter themes have base WordPress functionality, but very little or no style. Starter theme developers <strong>encourage</strong> you to hack it and make it your own.</p>
+				</section>
+
+				<section>
+					<h3>Starter Themes</h3>
+					<p>Starter themes can also come with a base framework, like HTML 5 Boilerplate, Twitter Bootstrap or a responsive grid if you enjoy using frameworks. There's no need to reinvent the wheel!</p>
+				</section>
+
+				<section>
+					<h3>Starter Themes</h3>
+					<h3>Links to popular themes</h3>
+					
+					<ul>
+						<li><a href="http://underscores.me/" target="_blank"><strong>_s (Underscores)</strong></a> Created by the folks at Automattic, the company behind WordPress.com</li>
+						<li><a href="http://themble.com/bones/" target="_blank"><strong>Bones</strong></a> A Mobile-First & Responsive theme built on HTML5 Boilerplate</li>
+						<li><a href="http://roots.io/" target="_blank"><strong>Roots</strong></a> WordPress starter theme based on HTML5 Boilerplate & Bootstrap</li>
+						<li><a href="http://torquemag.io/starter-themes/" target="_blank"><strong>10 Starter WP Themes, Frameworks to Try, Use</strong></a> Article from Torque Mag</li>
+					</ul>
+				</section>			
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Exercise time!</h2>
+					<h3>Install a Starter theme</h3>
+
+					<ul>
+						<li>Download and install a starter theme</li>
+						<li>Make it your own by editing style.css and screenshot.png</li>
+					</ul>
+				</section>	
+				
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Resources</h2>
+					<h3>Essential WordPress Codex Articles</h3>
+
+					<ul>
+						<li><strong><a href="http://codex.wordpress.org/" target="_blank">The WordPress Codex</a></strong> - the online manual for WordPress and a living repository for WordPress information and documentation.</li>
+						<li><strong><a href="http://codex.wordpress.org/Theme_Development" target="_blank">Theme Development</a></strong> </li>
+						<li><strong><a href="http://codex.wordpress.org/Stepping_Into_Templates" target="_blank">Stepping Into Templates</a></strong></li>
+					</ul>
+				</section>	
+				
+				<section>
+					<h1>THE END of Day 1</h1>
+
+					<h4>Questions and 1-on-1 help time!</h4>
+				</section>
+
+			</div>
+			
+			<footer>
+				<div class="copyright">
+				  Building Themes For WordPress &#187; With Tracy Levesque &#8226; 
+				  <a href="https://twitter.com/LilJimmi" target="_blank">@LilJimmi</a> &#8226; 
+				  tracy@yikesinc.com &#8226; <a href="http://yikesinc.com" target="_blank">yikesinc.com</a>
+				  <span class="footer-nav"><a href="#/beginning-slide">Start</a></span>
+				</div>
+			</footer>
+		</div>
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

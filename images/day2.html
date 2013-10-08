@@ -1,0 +1,1025 @@
+
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>GDI - Building Themes for WordPress</title>
+
+		<meta name="description" content="Girl Develop It framework for easily creating beautiful presentations using HTML in GDI theme. Forked from Hakim El Hattab's reveal.js">
+		<meta name="author" content="Girl Develop It">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/gdilight.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<!-- light editor<link rel="stylesheet" href="lib/css/light.css">-->
+		<!-- dark editor--><link rel="stylesheet" href="lib/css/light.css">
+
+		<!-- If use the PDF print sheet so students can print slides-->
+		
+		<link rel="stylesheet" href="css/print/pdf.css" type="text/css" media="print">
+		<link rel="icon" type="image/x-icon" href="favicon.ico" />
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				
+        <!-- Opening -->
+				<section id="beginning-slide">
+					<h3>Girl Develop It</h3>
+					<h1>Building Themes for WordPress</h1>
+					<p>
+						<small>With Tracy Levesque</small>
+					</p>
+					<p>
+						<small><a href="https://twitter.com/LilJimmi" target="_blank">@LilJimmi</a> &#8226; 
+						<a href="mailto:tracy@yikesinc.com">tracy@yikesinc.com</a> &#8226; 
+						<a href="http://yikesinc.com" target="_blank">yikesinc.com</a></small>
+					</p>
+					
+					<p>
+						Day 2 Slides located at: <a href="http://thetracyl.com/gdi/building-themes/day2.html">thetracyl.com/gdi/building-themes/day2.html</a>
+					</p>
+					
+				</section>
+				
+				
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Day 2</h2>
+					<h3>Today you will...</h3>
+					<ul>
+						<li>Learn about loops and queries</li>
+						<li>Learn about adding functionality to your theme</li>
+						<li>Learn about hooks, actions and filters</li>
+						<li>Learn some handy WordPress functions</li>
+						<li>Learn how to make widgetized areas and widgets</li>
+						<li>Learn how to make custom post types</li>
+					</ul>
+					
+					<h3>And</h3>
+					<ul>
+						<li>Take a 15 minute break at 3pm</li>
+					</ul>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>But First</h2>
+					<h3>A review...</h3>
+					<ul>
+						<li>What is the #1 rule of WordPress development?</li>
+						<li>What is the proper method of modifying an existing WordPress theme?</li>
+						<li>What is a conditional tag?</li>
+						<li>What is the purpose of the WordPress Template Hierarchy?</li>
+						<li>What is the benefit of using a Starter Theme?</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>The Loop</h3>
+					<h4><a href="http://codex.wordpress.org/The_Loop" target="_blank">codex.wordpress.org says:</a></h4>
+					<blockquote>
+						The Loop is PHP code used by WordPress to display posts.
+					</blockquote>
+				</section>	
+				
+
+				<section>
+					<h3>The Loop</h3>
+					<h4>Runs on Every Page</h4>
+					<p>
+						The Loop is a set of instructions in a template that grabs content and displays it on a page.
+					</p>
+					
+					<p>
+						It's called a "loop" because the set of instructions can be repeated multiple times on a page. For example, <code>index.php</code>.
+					</p>
+
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/The_Loop" target="_blank">The Loop</a></p>
+				</section>
+				
+				<section>
+					<h3>The Loop</h3>
+					<h4>What it is</h4>
+					<p>
+						Within The Loop are the main parts of a page or post.
+					</p>
+						
+					<p><code>&lt;?php the_title(); ?&gt;</code></p>
+					<p><code>&lt;?php the_content(); ?&gt;</code></p>
+					
+				</section>
+
+				<section>
+					<h3>The Loop</h3>
+					<h4>What it is</h4>
+					<p>
+						You can also grab additional content, aka <strong>Metadata</strong>, attached to pages or posts. Some function tags will only work if they are <a href="http://codex.wordpress.org/Stepping_Into_Template_Tags#Template_Tags_and_The_Loop" target="_blank">placed within The Loop</a>.
+					</p>
+						<ul>
+							<li>Author</li>
+							<li>Date</li>
+							<li>Featured Image</li>
+							<li>Categories (posts only)</li>
+							<li>Tags (posts only)</li>
+							<li>Etc.</li>
+						</ul>
+				</section>
+
+				<section>
+					<h3>The Loop</h3>
+					<h4>Examples</h4>
+					<p>
+						Let's check out The Loop in a few different Twentythirteen templates
+					</p>
+						
+						<ul>
+							<li><code>page.php</code></li>
+							<li><code>index.php</code></li>
+							<li><code>content.php</code></li>
+						</ul>
+				</section>
+					
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Exercise time!</h2>
+					<h3>Practice modifying the WordPress Loop</h3>
+
+					<ul>
+						<li>Make a copy of a template in your child theme and modify the default loop</li>
+						<li>Suggestion: Change the blog page to show excerpts instead of full content.</li>
+					</ul>
+				</section>	
+
+				<section>
+					<h3>WP_Query</h3>
+					
+					<p>Use <code>WP_Query</code> to write your own loops</p>
+
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Class_Reference/WP_Query" target="_blank">WP_Query</a></p>
+				</section>	
+
+				<section>
+					<h3>WP_Query</h3>
+					<h4>Basic Structure</h4>
+					
+<pre><code>&lt;!-- // The Query --&gt;
+&lt;?php $myloop = new WP_Query( $args ); ?&gt;
+
+&lt;ul&gt;
+&lt;!-- // The Loop --&gt;
+&lt;?php while ($myloop-&gt;have_posts()) : $myloop-&gt;the_post(); ?&gt;
+	&lt;li&gt;
+		&lt;h2&gt;&lt;?php the_title(); ?&gt;&lt;/h2&gt;
+		
+		&lt;p&gt;&lt;?php the_content(); ?&gt;&lt;/p&gt;
+	&lt;/li&gt;
+&lt;?php endwhile;  ?&gt;	
+&lt;/ul&gt;
+
+</code></pre>
+					
+				</section>			
+
+				<section>
+					<h3>WP_Query</h3>
+					<h4>$args</h4>
+Show posts by a certain author: 
+<pre><code>&lt;!-- // The Query --&gt;
+&lt;?php $myloop = new WP_Query( 'author_name=tracy' ); ?&gt;
+
+</code></pre>
+					
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Class_Reference/WP_Query#Author_Parameters" target="_blank">WP_Query Author Parameters</a></p>
+				</section>	
+
+				<section>
+					<h3>WP_Query</h3>
+					<h4>$args</h4>
+Show posts in a certain category: 
+<pre><code>&lt;!-- // The Query --&gt;
+&lt;?php $myloop = new WP_Query( 'cat=4' ); ?&gt;
+
+</code></pre>
+					
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Class_Reference/WP_Query#Category_Parameters" target="_blank">WP_Query Category Parameters</a></p>
+				</section>	
+
+				<section>
+					<h3>WP_Query</h3>
+					<h4>$args</h4>
+Show posts with a certain tag: 
+<pre><code>&lt;!-- // The Query --&gt;
+&lt;?php $myloop = new WP_Query( 'tag=cats' ); ?&gt;
+
+</code></pre>
+					
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Class_Reference/WP_Query#Tag_Parameters" target="_blank">WP_Query Tag Parameters</a></p>
+				</section>	
+
+				<section>
+					<h3>WP_Query</h3>
+					<h4>$args</h4>
+Show x number of posts at a time: 
+<pre><code>&lt;!-- // The Query --&gt;
+&lt;?php $myloop = new WP_Query( 'posts_per_page=5' ); ?&gt;
+
+</code></pre>
+					
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Class_Reference/WP_Query#Pagination_Parameters" target="_blank">WP_Query Pagination Parameters</a></p>
+					
+				</section>	
+
+				<section>
+					<h3>WP_Query</h3>
+					<h4>$args</h4>
+Order posts in alphabetical order by title: 
+<pre><code>&lt;!-- // The Query --&gt;
+&lt;?php $myloop = new WP_Query( 'orderby=title' ); ?&gt;
+
+</code></pre>
+					
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">WP_Query Orderby Parameters</a></p>
+					
+				</section>	
+
+				<section>
+					<h3>WP_Query</h3>
+					<h4>$args</h4>
+Put multiple parameters in an array: 
+<pre><code>&lt;!-- // The Query --&gt;
+&lt;?php $myloop = new WP_Query( array( 'cat' => 'cooking', 'posts_per_page' => '5', 'orderby' => 'date', 'order' => 'DESC' ) ); ?&gt;
+
+</code></pre>
+					
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Exercise time!</h2>
+					<h3>Make a "Recent Posts" featured content box on the home page</h3>
+
+					<ul>
+						<li>Make a Home Page Template</li>
+						<li>Add a content box</li>
+						<li>Create a WP_Query loop to show the latest 5 posts</li>
+					</ul>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4><code>functions.php</code></h4>
+					
+					<p>
+						functions.php is a special file that acts like a plugin to add functionality to your theme. If you're using a child theme you can use it modify and add functionality to the parent theme.
+					</p>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4><code>functions.php</code></h4>
+					
+					<p>
+						You can tell your theme to load external files in <code>functions.php</code>. It helps you keep <code>functions.php</code> from being overloaded with too much code.
+					</p>
+					
+<pre>
+<code>
+// Configure the admin section
+require_once 'inc/my-file.php';
+
+</code>
+</pre>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>Hooks, Action and Filters</h4>
+					
+					<h4><a href="http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters" target="_blank">codex.wordpress.org says:</a></h4>
+					<blockquote>
+						Hooks are provided by WordPress to allow your plugin to 'hook into' the rest of WordPress...There are 2 kinds of hooks: 
+						<ul>
+							<li>Actions: A custom PHP function defined in your plugin (or theme) and hooked, i.e. set to respond, to specific events that take place in WordPress. </li>
+							<li>Filters: Functions that WordPress passes data through, at certain points in execution, just before taking some action with the data </li>
+						</ul>						
+					</blockquote>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>Hooks, Action and Filters</h4>
+
+					<p>
+						Hooks, Actions and Filters allow you to change core WordPress functionality without breaking it.
+					</p>
+				</section>	
+				
+				
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>Hooks, Action and Filters</h4>
+
+					<p>	
+						<strong>Hooks</strong> - Points at which WordPress allows you to tap into a function and safely modify it.	
+					</p>
+					<p>
+						Some examples are:
+					</p>
+					
+					<ul>
+						<li>Changing the length of the excerpt</li>
+						<li>Adding Widgetized areas</li>
+						<li>Adding Menu areas</li>
+						<li>And hundreds of other things</li>
+					</ul>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>Hooks, Action and Filters</h4>
+
+					<p>	
+						<strong>Actions</strong> - A hook that makes something new happen when a WordPress function is triggered.
+					</p>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>Hooks, Action and Filters</h4>
+					
+					<p>	
+						<strong>Filters</strong> - A hook that modifies a WordPress function when it is triggered.
+					</p>
+				</section>	
+				
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>Hooks, Action and Filters</h4>
+					
+					<h4><a href="http://wordpress.tv/2013/07/31/tracy-levesque-what-you-dont-know-you-can-do-wordpress-development-for-absolutely-everyone/" target="_blank">Visual Demo of Hooks, Actions and Filters</a></h4>
+					<p>
+						From my talk at WordCamp San Francisco.<br />
+						19 minutes in.
+					</p>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>Handy WordPress Functions</h4>
+					
+					<p>
+						The following is an overview of some handy WordPress functions you can hook into to enrich your themes.
+					</p>
+
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/" target="_blank">Entire Function Reference</a></p>
+				</section>		
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>add_image_size</h4>
+					
+					<p>
+						You can add custom images sizes (in addition to the default thumb, medium, large and original).
+					</p>
+<pre>
+<code>				
+add_image_size( 'my-img', 400, 400 ); // soft proportional crop mode
+add_image_size( 'other-img', 200, 269, true ); // hard crop mode
+
+</code>
+</pre>
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/add_image_size" target="_blank">add image size</a></p>
+				</section>		
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>get_the_post_thumbnail</h4>
+					
+					<p>
+						In your template you can use a tag to load your custom version of featured images.
+					</p>
+<pre>
+<code>				
+&lt;?php echo get_the_post_thumbnail($page->ID, 'my-img'); ?&gt;
+
+</code>
+</pre>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>wp_enqueue_style / wp_enqueue_script</h4>
+					
+					<p>
+						You may want to add css and js files to your theme, for instance jQuery, or a framework like Bootstrap. A common beginner mistake is to hard code these into <code>header.php</code>. The correct way to add files to <code>&lt;head&gt;</code> is to enqueue it in your <code>functions.php</code> file.
+					</p>
+					
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/wp_enqueue_style" target="_blank">wp enqueue style</a> and
+					<a href="http://codex.wordpress.org/Function_Reference/wp_enqueue_script" target="_blank">wp enqueue script</a></p>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>wp_enqueue_style / wp_enqueue_script</h4>
+					
+					<p>Load WordPress' core copy of jQuery. If you're using jQuery with your theme you should always use WP's copy vs. an external version. </p>
+<pre>
+<code>	
+function my_scripts() {
+	wp_enqueue_script( 'jquery');
+}
+
+add_action( 'wp_enqueue_scripts', 'my_scripts' );
+
+</code>
+</pre>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>wp_enqueue_style / wp_enqueue_script</h4>
+					
+					<p>Load a script that depends on jQuery. Bootstrap is a framework that needs jQuery to run. The code below will load both jQuery and Bootstrap JS.</p>
+<pre>
+<code>	
+function add_bootstrap() {
+	wp_enqueue_script(
+		'add-bootstrap-script',
+		get_stylesheet_directory_uri() . '/inc/bootstrap/js/bootstrap.min.js',
+		array( 'jquery' )
+	);
+}
+
+add_action( 'wp_enqueue_scripts', 'add_bootstrap' );
+
+</code>
+</pre>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>wp_enqueue_style / wp_enqueue_script</h4>
+					
+					<p>Load a stylesheet and a script.</p>
+<pre>
+<code>function add_bootstrap() {
+	wp_enqueue_script(
+		'add-bootstrap-script',
+		get_stylesheet_directory_uri() . '/inc/bootstrap/js/bootstrap.min.js',
+		array( 'jquery' )
+	);
+	wp_enqueue_style( 
+		'add-bootstrap-style', 
+		get_template_directory_uri() . '/inc/bootstrap/css/bootstrap.min.css', 
+		array(), 'all' );
+}
+
+add_action( 'wp_enqueue_scripts', 'add_bootstrap' );
+</code>
+</pre>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>register_nav_menus</h4>
+					
+					<p> 
+						<img src="images/menus.png" class="right" />
+						If you have used custom menus in WordPress sites before (Appearance > Menus in the admin) you know a theme can have specific menu locations.
+					</p>
+					
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/register_nav_menus" target="_blank">register nav menus</a></p>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>register_nav_menus</h4>
+					
+					<p> 
+						Use <code>register_nav_menus</code> to register your menus.
+					</p>
+<pre>
+<code>	
+register_nav_menus( array(
+	'primary' => 'Primary Menu',
+	'header' => 'Header Menu',
+	'footer1' => 'Left Footer Menu',
+	'footer2' => 'Right Footer Menu',
+	'about' => 'About Sub Menu'
+) );
+
+</code>
+</pre>
+				</section>		
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>wp_nav_menu</h4>
+					
+					<p> 
+						Use the <code>wp_nav_menu</code> tag to assign a menu to a location in your theme.
+					</p> 
+<pre>
+<code>	
+&lt;?php wp_nav_menu( array( 'theme_location' => 'footer1' ) ); ?&gt;
+
+</code>
+</pre>
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/wp_nav_menu" target="_blank">wp nav menu</a></p>
+				</section>		
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>wp_nav_menu</h4>
+					
+					<p> 
+						You can also use <code>wp_nav_menu</code> to load any custom menu you've created in Appearance > Menus. You can use the menu's ID, slug, or name.
+					</p> 
+<pre>
+<code>	
+&lt;?php wp_nav_menu( array('menu' => '2' )); ?&gt;
+
+</code>
+</pre>
+				</section>	
+				
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>register_sidebar</h4>
+					
+					<p>
+						<img src="images/widgets.png" class="right" />
+						Most themes come with specific widgetized areas -- locations in the sidebar, footer, header, etc. that you can drag and drop widgets into. You can use <code>register_sidebar</code> to create widgetized areas in your theme.
+					</p>
+					
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/register_sidebar" target="_blank">register sidebar</a></p>
+				</section>		
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>register_sidebar</h4>
+					
+					<p> 
+						Use <code>register_sidebar</code> to register your widgetized areas.
+					</p> 
+<pre>
+<code>	
+register_sidebar(array(
+	'name' => __( 'Header Widget Area' ),
+	'id' => 'headerwidget',
+	'description' => __( 'The header widget area.' ),
+	'before_widget' => '&lt;div id="%1$s" class="headerwidget %2$s"&gt;',
+	'after_widget' =&gt; '&lt;/div&gt;',
+	'before_title' =&gt; '&lt;h4 class="headerwidgettitle"&gt;',
+	'after_title' =&gt; '&lt;/h4&gt;',
+));
+
+</code>
+</pre>
+				</section>		
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>dynamic_sidebar</h4>
+					
+					<p> 
+						Use the <code>dynamic_sidebar</code> tag to assign a widgetized area to a location in your theme.
+					</p> 
+<pre>
+<code>	
+&lt;?php dynamic_sidebar( 'headerwidget' ); ?&gt;
+
+</code>
+</pre>
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/dynamic_sidebar" target="_blank">dynamic sidebar</a></p>
+				</section>		
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>dynamic_sidebar with conditional tags</h4>
+					
+					<p> 
+						Use the <code>dynamic_sidebar</code> tag along with conditional tags to load certain widget areas on certain pages.
+					</p> 
+<pre>
+<code>	
+&lt;?php
+	if(is_page( 'about' )){
+		dynamic_sidebar( 'aboutsidebar' );
+	}
+?&gt;		
+
+&lt;?php
+	if(is_page( 'contact' )){
+		dynamic_sidebar( 'contactsidebar' );
+	}
+?&gt;	
+
+</code>
+</pre>
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/dynamic_sidebar" target="_blank">dynamic sidebar</a></p>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Exercise time!</h2>
+					<h3>Add some functionality to your theme!</h3>
+
+					<p>
+						Try to use any of the functions we learned today.
+						<ul>
+							<li>add_image_size</li>
+							<li>get_the_post_thumbnail</li>
+							<li>wp_enqueue_style</li>
+							<li>wp_enqueue_script</li>
+							<li>register_nav_menus</li>
+							<li>wp_nav_menu</li>
+							<li>register_sidebar</li>
+							<li>dynamic_sidebar</li>
+						</ul>
+					</p>
+				</section>	
+				
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>WP_Widget</h4>
+					
+					<p>
+						Not only can you create widgetized areas, you can create custom widgets to drag and drop into those areas.
+					</p>
+					
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Widgets_API" target="_blank">Widgets API</a></p>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Creating Widgets</h2>
+						
+					<h4>WP_Widget</h4>
+					
+					<p>
+						Note: You should put all of your widget code into its own file. If your widget is breaking the site you can easily turn the widget "on" and "off" while you troubleshoot code. You can put a line of code in <code>functions.php</code> that loads the widget file. You can comment out the line to turn the widget "off"
+					</p>
+<pre>
+<code>	
+/* load my widgets */
+require_once 'inc/widget-name.php';
+
+</code>
+</pre>
+				</section>		
+
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Creating Widgets</h2>
+						
+					<h4>Example Widget: My Awesome Widget</h4>
+					<p>
+						We'll go through all the code for My Awesome Widget
+					</p>
+					
+					<p><br /><a href="https://github.com/TheTracyL/GDI-Widget-Example/blob/master/my-widget.php" target="_blank">View the code on Github</a></p>
+				</section>		
+
+				
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Exercise time!</h2>
+					<h3>Make a widget</h3>
+
+					<p>
+						We'll be here to help.
+					</p>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Custom Post Types</h2>
+					<h3>Official description from WordPress.org</h3>
+					<blockquote>
+						A Custom Type is a Post Type you define.
+					</blockquote>
+					
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Post_Types" target="_blank">Post Types</a></p>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Custom Post Types</h2>
+					<h4>WordPress comes with 2 major Post Types:</h4>
+					
+					<p>
+						<img src="images/pages-posts.png" />
+					</p>
+					
+					<p>
+						<strong>They both</strong>
+						<ul>
+							<li>Are unique content types with their own sets of fields</li>
+							<li>Have their own admin area on the WordPress admin</li>
+							<li>Let you add content in a repeating and consistent manner</li>
+							<li>Have a consistent layout on the front-end</li>
+						</ul>
+					</p>
+					
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Custom Post Types</h2>
+					<h4>Create your own Post Types!</h4>
+					
+					<p>
+						You can create your own post type that has its own fields, admin in the back-end and layout on the front-end. This is perfect for any type of repeating content you want to manage easily from the WordPress admin.
+					</p>
+					
+					<p>
+						<img src="images/staff.png" />
+						<img src="images/recipes.png" />
+						<img src="images/products.png" />	
+						<img src="images/jobs.png" />	
+					</p>
+					
+				</section>		
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Custom Post Types</h2>
+					<h4>Custom Taxonomies</h4>
+					
+					<p>
+						Custom Post Types can also have their own <strong>custom taxonomies</strong>. That just means they can have their own ways to group posts together.
+					</p>
+					<p>
+						<strong>Categories</strong> and <strong>Tags</strong> are taxonomies for Posts and Pages.
+					</p>
+					<p>
+						<img src="images/cat-tag.png" />
+					</p>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Custom Post Types</h2>			
+					
+					<p>
+						A tour of the custom post type "Kittens."
+					</p>
+				</section>	
+					
+				
+				<section>
+				
+					<h2>Creating Custom Post Types</h2>
+					
+					<p>
+						Note: Just like with widgets, you should put CPT code into its own file. You can put a line of code in <code>functions.php</code> that loads the CPT file. 
+					</p>
+
+<pre>
+<code>	
+require_once 'inc/kittens.php';
+
+</code>
+</pre>
+				</section>	
+				
+
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Creating Custom Post Types</h2>
+						
+					<h4>Step One <code>inc/kittens.php</code></h4>
+					
+					<p>
+						<code>inc/kittens.php</code> is the file that defines all the details for our Custom Post Type and Custom Taxonomies.
+					</p>
+					
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/register_post_type" target="_blank">register post type</a></p>
+				</section>	
+
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Creating Custom Post Types</h2>
+						
+					<h4>Step One <code>inc/kittens.php</code></h4>
+					<p>
+						Register your custom post type and custom taxonomies. We'll go through all the code for our Kittens CPT
+					</p>
+					
+					<p><br /><a href="https://github.com/TheTracyL/CPTs-For-Designers/blob/master/kittens/inc/kittens.php" target="_blank">View the code on Github</a></p>
+				</section>		
+				
+
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Creating Custom Post Types</h2>
+						
+					<h4>Step Two <code>page-kittens.php</code></h4>
+					<p>
+						Make the template file that contains the loop for our Kittens CPT. We are going to use our template making and WP_Query skills to make a page to display our kittens.
+					</p>
+					
+					<p><br /><a href="https://github.com/TheTracyL/CPTs-For-Designers/blob/master/kittens/page-kittens.php" target="_blank">View the code on Github</a></p>
+				</section>			
+				
+
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Creating Custom Post Types</h2>
+						
+					<h4>Step Three <code>single-wcp_kittens.php</code></h4>
+					<p>
+						Remember The <a href="http://codex.wordpress.org/images/1/18/Template_Hierarchy.png" target="_blank">WordPress Template Hierarchy</a>?<br />
+						It works for CPTs, too. 
+					</p>
+					
+					<p>
+						<img src="images/cpt-wth.png" />
+					</p>
+				</section>				
+				
+
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Creating Custom Post Types</h2>
+						
+					<h4>Step Three <code>single-wcp_kittens.php</code></h4>
+					<p>
+						Make the template file for a single kitten page. We'll throw in a custom thumbnail.
+					</p>
+					
+					<p><br /><a href="https://github.com/TheTracyL/CPTs-For-Designers/blob/master/kittens/page-kittens.php" target="_blank">View the code on Github</a></p>
+				</section>					
+				
+
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Creating Custom Post Types</h2>
+					<h3>Tip!</h3>
+						
+					<h4>Hey, I'm getting a 404 error when I view a single kitten</h4>
+					<p>
+						Have you named everything correctly and you're getting a 404 when you click on your CPT? Before Googling, reading support forums and going out of your mind refresh your permalinks. That will do the trick.
+					</p>
+				</section>		
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Creating Custom Post Types</h2>
+						
+					<h4>Making templates for our custom taxonomies</h4>
+					<p>
+						The <a href="http://codex.wordpress.org/images/1/18/Template_Hierarchy.png" target="_blank">WTH</a> also works on custom taxonomies.
+					</p>
+					
+					<p>
+						<img src="images/tax-wth.png" />
+					</p>
+				</section>			
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Creating Custom Post Types</h2>
+						
+					<h4>Custom taxonomy templates: <code>taxonomy.php</code> and <code>taxonomy-custom_cat_color.php</code></h4>
+					<p>
+						Make a template for all custom taxonomy archive pages and for a specific term.
+					</p>
+					
+					<p><br />View the code on Github: <a href="https://github.com/TheTracyL/CPTs-For-Designers/blob/master/kittens/taxonomy.php" target="_blank">taxonomy.php</a> and <a href="https://github.com/TheTracyL/CPTs-For-Designers/blob/master/kittens/taxonomy-custom_cat_color.php" target="_blank">taxonomy-custom_cat_color.php</a></p>
+				</section>					
+
+
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Resources</h2>
+
+					<ul>
+						<li><strong><a href="http://www.wprecipes.com/" target="_blank">WPRecipes</a></strong> - A collection of clear and concise WordPress recipes.</li>
+						<li><strong><a href="http://wp-snippets.com/" target="_blank">WP Snippets</a></strong> - WordPress Code Snippets</li>
+						<li><strong><a href="http://wpmu.org/create-a-wordpress-widget/" target="_blank">How to Create a WordPress Widget</a></strong> - 4 Killer Tutorials You Should Read</li>
+						<li><strong><a href="http://nathaningram.com/recommendations/wordpress-custom-post-type-icons/" target="_blank">Non-Cheesy WordPress Custom Post Type Icons</a></strong> - A nice collection of CPT icons</li>
+						<li><strong><a href="http://www.weareo3.com/wordpress-custom-post-type-generator/" target="_blank">WordPress Custom Post Type Generator</a></strong> - A handy tool to help you create a Custom Post Type code</li>
+					</ul>
+				</section>	
+				
+				<section>
+					<h1>THE END of Day 2</h1>
+
+					<h4>Questions and 1-on-1 help time!</h4>
+				</section>
+
+
+			</div>
+			
+			<footer>
+				<div class="copyright">
+				  Building Themes For WordPress &#187; With Tracy Levesque &#8226; 
+				  <a href="https://twitter.com/LilJimmi" target="_blank">@LilJimmi</a> &#8226; 
+				  tracy@yikesinc.com &#8226; <a href="http://yikesinc.com" target="_blank">yikesinc.com</a>
+				  <span class="footer-nav"><a href="#/beginning-slide">Start</a></span>
+				</div>
+			</footer>
+		</div>
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
