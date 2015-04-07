@@ -37,16 +37,16 @@
 			<div class="slides">
 				
         <!-- Opening -->
+
 				<section id="beginning-slide">
-					<h3>Girl Develop It</h3>
-					<h1>Building Themes for WordPress</h1>
+					<img src="images/gdi-logo-sm.png" class="no-border" />
+					<h2>Building Themes for WordPress</h2>
 					<p>
 						<small>With Tracy Levesque</small>
 					</p>
 					<p>
 						<small><a href="https://twitter.com/LilJimmi" target="_blank">@LilJimmi</a> &#8226; 
-						<a href="mailto:tracy@yikesinc.com">tracy@yikesinc.com</a> &#8226; 
-						<a href="http://yikesinc.com" target="_blank">yikesinc.com</a></small>
+						<a href="http://TheTracyL.com" target="_blank">TheTracyL.com</a></small>
 					</p>
 					
 					<p>
@@ -81,7 +81,6 @@
 						<li>Co-founded web design and development company, YIKES, Inc. in 1996 with 2 other women</li>
 						<li>Made a WordPress blog for my kid in 2006</li>
 						<li>Hooked ever since</li>
-						<li>Building themes for the past three years</li>
 					</ul>
 				</section>			
 				
@@ -144,7 +143,7 @@
 					<h2>Themes are</h2>
 					<h3>Often Free</h3>
 					<p>
-						There are 2,033 (and counting) free themes in the official <a href="http://wordpress.org/themes/" target="_blank">WordPress Themes Directory</a>.
+						There are 2,616 (and counting) free themes in the official <a href="http://wordpress.org/themes/" target="_blank">WordPress Themes Directory</a>.
 					</p>
 				</section>
 				
@@ -153,10 +152,10 @@
 					<h2>Managing Themes</h2>
 					<h3>Appearance > Themes</h3>
 					<p>
-						WordPress currently comes with 3 themes: Twenty Eleven, Twenty Twelve and Twenty Thirteen.
+						WordPress currently comes with 3 themes: Twenty Twelve, Twenty Thirteen and Twenty Fourteen.
 					</p>
 					<p>
-						Under Appearance > Themes you can see they are both <a href="http://yikesdev.com/gdi1/wp-admin/themes.php" target="_blank">installed</a>. The theme in use is labeled "Current" and the other "Available."
+						Under Appearance > Themes you can see all installed themes. The theme in use is labeled "Active."
 					</p>
 				</section>
 				
@@ -183,8 +182,16 @@
 				
 				<!-- Examples of basic html based slides -->
 				<section>
+					<h2>Themes</h2>
+					<h3>The Theme Customizer</h3>
+					<p>
+						Preview changes before you commit.
+					</p>
+				</section>
+				
+				<!-- Examples of basic html based slides -->
+				<section>
 					<h2>Meet Twenty Thirteen</h2>
-					<h3>The current WordPress default theme</h3>
 					
 					<blockquote>
 						The 2013 theme for WordPress takes us back to the blog, featuring a full range of post formats, each displayed beautifully in their own unique way. Design details abound, starting with a vibrant color scheme and matching header images, beautiful typography and icons, and a flexible layout that looks great on any device, big or small.
@@ -218,7 +225,7 @@
 							<li>plugins</li>
 							<li>themes</li>
 								<ul>
-									<li><span class="green">twentyeleven</span></li>
+									<li><span class="green">twentyfourteen</span></li>
 									<li><span class="green">twentythirteen</span></li>
 									<li><span class="green">twentytwelve</span></li>
 								</ul>
@@ -229,7 +236,7 @@
 				<!-- Examples of basic html based slides -->
 				<section>
 					<h2>Modifying Themes</h2>
-					<h3>So, now that I know where the theme files live I can just start hacking them, right?</h3>
+					<h3>Now I know where the theme files live I can just start hacking them, right?</h3>
 					<p>
 						<strong>NO!</strong>
 					</p>
@@ -265,11 +272,11 @@
 				<!-- Examples of basic html based slides -->
 				<section>
 					<h2>So how do you customize a WordPress theme?</h2>
-					<h3>You create your own theme that is a "child" of another theme</h3>
+					<h3>You create a theme that is a "child" of another theme</h3>
 					
 					<ul>
 						<li>Your child theme overrides the design elements you want changed and otherwise falls back to the parent.</li>
-						<li>Your child theme can also modify or add functionality to the parent theme.</li>
+						<li>Your child theme can also overrides or add functionality to the parent theme.</li>
 					</ul>
 				</section>	
 				
@@ -290,7 +297,7 @@
 				<section>
 					<h2>Making a Child Theme</h2>
 						
-					<h3>We'll make a child theme for default WordPress theme, Twenty Thirteen</h3>
+					<h3>We'll make a child theme for Twenty Thirteen</h3>
 				</section>	
 				
 				<!-- Examples of basic html based slides -->
@@ -356,10 +363,9 @@ Version: 1
 						
 					<h3>Thing #2 - a screenshot</h3>
 					
-					<p>You can find the 600px by 400px screenshot image file, <strong>screenshot.png</strong>,  in <br />
-						<code>/wp-content/themes/twentythirteen</code></p>
+					<p>The recommended image size is 880×660. The screenshot will only be shown as 387×290, but the over double-sized image allows for high-resolution viewing on HiDPI displays.</p>
 
-					<p>Open the file in your favorite graphics editor, turn it into your own screenshot and save it into your child theme's folder.</p>
+					<p>Create a 880px by 660px image file, name it “screenshot.png” and place it into the child theme’s folder.</p>
 				</section>	
 				
 				
@@ -379,10 +385,10 @@ Version: 1
 				<section>
 					<h2>Activate your theme</h2>
 					
-					<img src="images/awesome.png" class="right" />
 					<p>
-						After you've added your theme go check out Appearance > Themes in the WP admin.<br /><br />
-						Your child theme is now listed under "Available Themes." Hit activate and now your theme will be in charge.
+						After you've added your theme go check out Appearance > Themes in the WP admin.<br />
+						Your child theme is now on the list! Hit activate and now your theme will be in charge.
+						<img src="images/awesome.png" />
 					</p>					
 				</section>	
 				
@@ -393,14 +399,14 @@ Version: 1
 					<p><img src="images/folders2.png" /></p>
 					
 					<p>
-						The 2 files in your theme illustrate how a child theme's files effect the parent's files -- they either modify and add functionality to its identically named file, or completely overwrite it.
+						The 2 files illustrate how a child theme's files affect the parent's files -- they either modify and add functionality to its identically named file, or completely overwrite it.
 					<p>
 				</section>	
 				
 				<!-- Examples of basic html based slides -->
 				<section>
 					<h2>Exercise time!</h2>
-					<h3>Practice making child themes</h3>
+					<h3>Make a child theme</h3>
 
 					<ul>
 						<li>Create a child theme of Twenty Eleven, Twenty Twelve or Twenty Thirteen</li>
@@ -583,6 +589,15 @@ Template Name: [Type your template name here]
 				
 				<!-- Examples of basic html based slides -->
 				<section>
+					<h2>Tip: body classes</h2>
+
+					<p>
+						WordPress dynamically adds <a href="http://codex.wordpress.org/Function_Reference/body_class" target="_blank">classes to the body tag</a> depending what page you are on or template you are using. Use them to create unique styles for pages.
+					</p>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
 					<h2>Exercise time!</h2>
 					<h3>Practice modifying the parent theme</h3>
 
@@ -718,8 +733,31 @@ is_category()
 if(is_front_page()){
 	echo "&lt;p&gt;Web design by [your name here]&lt;/p&gt;";
 }
-?&gt;			
+?&gt;
+</code>
+</pre>
+				</section>				
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Function tags</h2>
+					<h3>Using Conditional tags</h3>
+					
+					<p>
+						Example: Add a div to the header that only shows on the home page
+					</p>
 
+					<p>
+						<code>header.php</code>
+					</p>
+					
+<pre>
+<code>
+&lt;?php if (is_front_page() ) {?&gt;
+	&lt;div class='header-homediv'&gt;
+		&lt;h1&gt;THIS IS THE HOME PAGE&lt;/h1&gt;
+	&lt;/div&gt;
+&lt;?php } ?&gt;
 </code>
 </pre>
 				</section>	
@@ -943,18 +981,13 @@ VS.
 					<h3>Starter Themes</h3>
 					<p>Starter themes can also come with a base framework, like HTML 5 Boilerplate, Twitter Bootstrap or a responsive grid if you enjoy using frameworks. There's no need to reinvent the wheel!</p>
 				</section>
-
+				
 				<section>
-					<h3>Starter Themes</h3>
-					<h3>Links to popular themes</h3>
-					
-					<ul>
-						<li><a href="http://underscores.me/" target="_blank"><strong>_s (Underscores)</strong></a> Created by the folks at Automattic, the company behind WordPress.com</li>
-						<li><a href="http://themble.com/bones/" target="_blank"><strong>Bones</strong></a> A Mobile-First & Responsive theme built on HTML5 Boilerplate</li>
-						<li><a href="http://roots.io/" target="_blank"><strong>Roots</strong></a> WordPress starter theme based on HTML5 Boilerplate & Bootstrap</li>
-						<li><a href="http://torquemag.io/starter-themes/" target="_blank"><strong>10 Starter WP Themes, Frameworks to Try, Use</strong></a> Article from Torque Mag</li>
-					</ul>
-				</section>			
+					<h3>Popular Starter Themes</h3>
+					<p>
+						<a href="http://underscores.me/" target="_blank"><img src="images/underscores-thumb.png" class="no-border" /></a> <a href="http://themble.com/bones/" target="_blank"><img src="images/bones.png" class="no-border" /></a> <a href="http://roots.io/starter-theme/" target="_blank"><img src="images/roots.png" class="no-border" /></a> <a href="http://html5reset.org/#wordpress" target="_blank"><img src="images/html5reset.png" class="no-border" /></a> <a href="http://320press.com/themes/wp-bootstrap/" target="_blank"><img src="images/wpbootstrap.png" class="no-border" /></a> <a href="http://quarktheme.com/" target="_blank"><img src="images/quark.png" class="no-border" /></a>						
+					</p>
+				</section>	
 				
 				<!-- Examples of basic html based slides -->
 				<section>
@@ -990,13 +1023,51 @@ VS.
 			
 			<footer>
 				<div class="copyright">
-				  Building Themes For WordPress &#187; With Tracy Levesque &#8226; 
-				  <a href="https://twitter.com/LilJimmi" target="_blank">@LilJimmi</a> &#8226; 
-				  tracy@yikesinc.com &#8226; <a href="http://yikesinc.com" target="_blank">yikesinc.com</a>
+				  Building Themes For WordPress &#187; With Tracy Levesque &#8226; <a href="https://twitter.com/LilJimmi" target="_blank">@LilJimmi</a> &#8226; 
+				  <a href="mailto:tracy@yikesinc.com">tracy@yikesinc.com</a> &#8226; 
+				  <a href="http://yikesinc.com" target="_blank">yikesinc.com</a>
 				  <span class="footer-nav"><a href="#/beginning-slide">Start</a></span>
 				</div>
-			</footer>
+			</footer>						
+
 		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
+
 
 
 		<script src="lib/js/head.min.js"></script>

@@ -1,67 +1,10 @@
-yikesdev.com/cpanel  
-yikesdev
-204!f1shtown
-
-http://yikesdev.com/gdi1/wp-admin/
-U: gdiuser1
-P: RHSz1vAL&js.Ggz
-
 Local Host
 
-http://localhost/gdi/wp-admin/
+http://localhost/themes/wp-admin/
 U: tracy
 P: CVwuHmHW$Kli
 
-http://localhost/tracy/wp-admin/
-U: tracy
-P: 123poops
-
-Day 1
------
-
-*Themes 
-
-*Templates
-
-*Template Tags
-	-Thumbnail
-	-Custom menu
-
-*Get Template Part
-
-*Template Hirearchy
-
-*Starter Themes
-
-*Resources
-
-
-===================
-
-Day 2
-
-*The Loop
-
-*WP Query
-
-*Hooks, Actions and Filters
-
-*Custom Thumbnail sizes
-
-*Enqueing Scripts
-
-*Widigitized areas
-
-*Widgets
-
-*Menu areas
-
-*Custom Post Types
-
-*Resources
-
-
-
-
-
-
+Database
+themes
+U: themes
+P: LhVVMQ5DDXH4dxT3

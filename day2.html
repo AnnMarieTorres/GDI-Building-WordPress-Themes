@@ -38,15 +38,15 @@
 				
         <!-- Opening -->
 				<section id="beginning-slide">
-					<h3>Girl Develop It</h3>
-					<h1>Building Themes for WordPress</h1>
+					<img src="images/gdi-logo-sm.png" class="no-border" />
+					<h2>Building Themes for WordPress</h2>
 					<p>
 						<small>With Tracy Levesque</small>
 					</p>
 					<p>
 						<small><a href="https://twitter.com/LilJimmi" target="_blank">@LilJimmi</a> &#8226; 
-						<a href="mailto:tracy@yikesinc.com">tracy@yikesinc.com</a> &#8226; 
-						<a href="http://yikesinc.com" target="_blank">yikesinc.com</a></small>
+						tracy@yikesinc.com &#8226; 
+						<a href="http://TheTracyL.com" target="_blank">TheTracyL.com</a></small>
 					</p>
 					
 					<p>
@@ -67,7 +67,7 @@
 						<li>Learn about hooks, actions and filters</li>
 						<li>Learn some handy WordPress functions</li>
 						<li>Learn how to make widgetized areas and widgets</li>
-						<li>Learn how to make custom post types</li>
+						<li>Learn about custom post types (if there's time)</li>
 					</ul>
 					
 					<h3>And</h3>
@@ -117,7 +117,7 @@
 					<h3>The Loop</h3>
 					<h4>What it is</h4>
 					<p>
-						Within The Loop are the main parts of a page or post.
+						Within the main loop are the main parts of a page or post.
 					</p>
 						
 					<p><code>&lt;?php the_title(); ?&gt;</code></p>
@@ -182,16 +182,16 @@
 &lt;?php $myloop = new WP_Query( $args ); ?&gt;
 
 &lt;ul&gt;
-&lt;!-- // The Loop --&gt;
+&lt;!-- // Loop starts --&gt;
 &lt;?php while ($myloop-&gt;have_posts()) : $myloop-&gt;the_post(); ?&gt;
 	&lt;li&gt;
 		&lt;h2&gt;&lt;?php the_title(); ?&gt;&lt;/h2&gt;
 		
 		&lt;p&gt;&lt;?php the_content(); ?&gt;&lt;/p&gt;
 	&lt;/li&gt;
-&lt;?php endwhile;  ?&gt;	
+&lt;!-- // Loop ends --&gt;	
+&lt;?php endwhile;  ?&gt;
 &lt;/ul&gt;
-
 </code></pre>
 					
 
@@ -279,9 +279,63 @@ Put multiple parameters in an array:
 &lt;!-- // The end of The Loop --&gt;
 &lt;/ul&gt;
 
-</code></pre>
-					
+</code></pre>					
 				</section>	
+
+				
+				<section>
+					<h3>WP_Query</h3>
+					<h4>If inside the main loop</h4>
+
+					<p>Use <code>wp_reset_postdata();</code></p>
+<pre><code>&lt;!-- // The Query --&gt;
+&lt;?php $myloop = new WP_Query( $args ); ?&gt;
+
+&lt;ul&gt;
+&lt;!-- // Loop starts --&gt;
+&lt;?php while ($myloop-&gt;have_posts()) : $myloop-&gt;the_post(); ?&gt;
+	&lt;li&gt;
+		&lt;h2&gt;&lt;?php the_title(); ?&gt;&lt;/h2&gt;
+		
+		&lt;p&gt;&lt;?php the_content(); ?&gt;&lt;/p&gt;
+	&lt;/li&gt;	
+&lt;!-- // Loop ends --&gt;	
+&lt;?php endwhile;  ?&gt;
+&lt;?php wp_reset_postdata(); // restores the main loop  ?&gt;
+&lt;/ul&gt;
+</code></pre>
+
+				</section>
+				
+				<section>
+					<h3>Tip: Use the Transients API</h3>
+
+<pre><code>&lt;?php 
+// Check for transient. If none, then execute WP_Query
+if ( false === ( $lastpostsloop = get_transient( 'home_lastposts_loop' ) ) ) {
+	
+    $lastpostsloop = new WP_Query( $args ));
+
+	// Put the results in a transient. Expire after 12 hours.
+	set_transient( 'home_lastposts_loop', $lastpostsloop, 12 * HOUR_IN_SECONDS );
+} ?&gt;
+
+&lt;!-- // The Loop --&gt;
+&lt;?php while ($lastpostsloop-&gt;have_posts()) : $lastpostsloop-&gt;the_post(); ?&gt;
+
+&lt;h3&gt;&lt;a href="&lt;?php the_permalink(); ?&gt;"&gt;&lt;?php the_title(); ?&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;!-- // The end of The Loop --&gt;
+&lt;?php endwhile;  ?&gt;	
+
+&lt;?php wp_reset_postdata(); ?&gt;
+</code></pre>
+
+					<p>
+						<br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Transients_API" target="_blank">Transients API</a>
+					</p>
+
+				</section>
 				
 				<!-- Examples of basic html based slides -->
 				<section>
@@ -503,7 +557,7 @@ add_image_size( 'other-img', 200, 269, true ); // hard crop mode
 					<h4>get_the_post_thumbnail</h4>
 					
 					<p>
-						In your template you can use a tag to load your custom version of featured images.
+						In your queries you can use <code>get_the_post_thumbnail</code> to load custom sizes of featured images.
 					</p>
 <pre>
 <code>				
@@ -517,97 +571,16 @@ add_image_size( 'other-img', 200, 269, true ); // hard crop mode
 				<section>
 					<h2>Adding functionality</h2>
 						
-					<h4>get_the_post_thumbnail</h4>
+					<h4>Tip: Regenerate Thumbnails</h4>
 					
 					<p>
-						<strong>Tip!</strong> Adding custom thumbnail sizes to functions.php will not affect images previously uploaded, only images uploaded from that point on. You will need to regenerate older images.
+						Adding custom thumbnail sizes to functions.php will not affect images previously uploaded, only images uploaded from that point on. You will need to regenerate older images.
 					</p>
 					
 					<p>
 						You can use the handy <a href="http://wordpress.org/plugins/regenerate-thumbnails/" target="_blank"><strong>Regenerate Thumbnails</strong></a> plugin to create the custom sizes of your previously uploaded images.
 					</p>
 				</section>	
-				
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Adding functionality</h2>
-						
-					<h4>wp_enqueue_style / wp_enqueue_script</h4>
-					
-					<p>
-						You may want to add css and js files to your theme, for instance jQuery, or a framework like Bootstrap. A common beginner mistake is to hard code these into <code>header.php</code>. The correct way to add files to <code>&lt;head&gt;</code> is to enqueue it in your <code>functions.php</code> file.
-					</p>
-					
-					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/wp_enqueue_style" target="_blank">wp enqueue style</a> and
-					<a href="http://codex.wordpress.org/Function_Reference/wp_enqueue_script" target="_blank">wp enqueue script</a></p>
-				</section>
-				
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Adding functionality</h2>
-						
-					<h4>wp_enqueue_style / wp_enqueue_script</h4>
-					
-					<p>Load WordPress' core copy of jQuery. If you're using jQuery with your theme you should always use WP's copy vs. an external version. </p>
-<pre>
-<code>	
-function my_scripts() {
-	wp_enqueue_script( 'jquery');
-}
-
-add_action( 'wp_enqueue_scripts', 'my_scripts' );
-
-</code>
-</pre>
-				</section>
-				
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Adding functionality</h2>
-						
-					<h4>wp_enqueue_style / wp_enqueue_script</h4>
-					
-					<p>Load a script that depends on jQuery. Bootstrap is a framework that needs jQuery to run. The code below will load both jQuery and Bootstrap JS.</p>
-<pre>
-<code>	
-function add_bootstrap() {
-	wp_enqueue_script(
-		'add-bootstrap-script',
-		get_stylesheet_directory_uri() . '/inc/bootstrap/js/bootstrap.min.js',
-		array( 'jquery' )
-	);
-}
-
-add_action( 'wp_enqueue_scripts', 'add_bootstrap' );
-
-</code>
-</pre>
-				</section>
-				
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Adding functionality</h2>
-						
-					<h4>wp_enqueue_style / wp_enqueue_script</h4>
-					
-					<p>Load a stylesheet and a script.</p>
-<pre>
-<code>function add_bootstrap() {
-	wp_enqueue_script(
-		'add-bootstrap-script',
-		get_stylesheet_directory_uri() . '/inc/bootstrap/js/bootstrap.min.js',
-		array( 'jquery' )
-	);
-	wp_enqueue_style( 
-		'add-bootstrap-style', 
-		get_template_directory_uri() . '/inc/bootstrap/css/bootstrap.min.css', 
-		array(), 'all' );
-}
-
-add_action( 'wp_enqueue_scripts', 'add_bootstrap' );
-</code>
-</pre>
-				</section>
 				
 				<!-- Examples of basic html based slides -->
 				<section>
@@ -769,11 +742,9 @@ if(is_page( 'contact' )){
 						<ul>
 							<li>add_image_size</li>
 							<li>get_the_post_thumbnail</li>
-							<li>wp_enqueue_style</li>
-							<li>wp_enqueue_script</li>
+							<li>register_nav_menus</li>
 						</ul>
 						<ul>
-							<li>register_nav_menus</li>
 							<li>wp_nav_menu</li>
 							<li>register_sidebar</li>
 							<li>dynamic_sidebar</li>
@@ -1056,7 +1027,7 @@ require_once 'inc/kittens.php';
 						Make the template file for a single Kitten post. We'll throw in a custom thumbnail.
 					</p>
 					
-					<p><br /><a href="https://github.com/TheTracyL/CPTs-For-Designers/blob/master/kittens/page-kittens.php" target="_blank">View the code on Github</a></p>
+					<p><br /><a href="https://github.com/TheTracyL/CPTs-For-Designers/blob/master/kittens/single-wcp_kittens.php" target="_blank">View the code on Github</a></p>
 				</section>					
 				
 
@@ -1104,10 +1075,9 @@ require_once 'inc/kittens.php';
 					<h2>Resources</h2>
 
 					<ul>
-						<li><strong><a href="http://www.wprecipes.com/" target="_blank">WPRecipes</a></strong> - A collection of clear and concise WordPress recipes.</li>
 						<li><strong><a href="http://wp-snippets.com/" target="_blank">WP Snippets</a></strong> - WordPress Code Snippets</li>
 						<li><strong><a href="http://wpmu.org/create-a-wordpress-widget/" target="_blank">How to Create a WordPress Widget</a></strong> - 4 Killer Tutorials You Should Read</li>
-						<li><strong><a href="http://nathaningram.com/recommendations/wordpress-custom-post-type-icons/" target="_blank">Non-Cheesy WordPress Custom Post Type Icons</a></strong> - A nice collection of CPT icons</li>
+						<li><strong><a href="http://melchoyce.github.io/dashicons/" target="_blank">Dashicons</a></strong> - Dashicons is the official icon font of the WordPress admin as of 3.8. Use them for your CPTs</li>
 						<li><strong><a href="http://www.weareo3.com/wordpress-custom-post-type-generator/" target="_blank">WordPress Custom Post Type Generator</a></strong> - A handy tool to help you create a Custom Post Type code</li>
 					</ul>
 				</section>	
