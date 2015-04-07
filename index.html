@@ -46,6 +46,7 @@
 					</p>
 					<p>
 						<small><a href="https://twitter.com/LilJimmi" target="_blank">@LilJimmi</a> &#8226; 
+						<a href="mailto:tracy@yikesinc.com">tracy@yikesinc.com</a> &#8226; 
 						<a href="http://TheTracyL.com" target="_blank">TheTracyL.com</a></small>
 					</p>
 					
@@ -56,7 +57,7 @@
 				
 				<section>
 					<h2>About you</h2>
-					<h3>Why do you want to build WordPress themes?</h3>
+					<h3>Why do you want to build themes for WordPress?</h3>
 					<ul>
 						<li>Your name and background</li>
 						<li>Why you're here</li>
@@ -66,7 +67,7 @@
 				
 				<section>
 					<h2>About the TAs</h2>
-					<h3>Why do you want to help people build WordPress themes?</h3>
+					<h3>Why do you want to help people build themes for WordPress?</h3>
 					<ul>
 						<li>Your name and background</li>
 						<li>Why you're here</li>
@@ -78,9 +79,10 @@
 					<h2>About me</h2>
 					<h3>How I got into WordPress</h3>
 					<ul>
-						<li>Co-founded web design and development company, YIKES, Inc. in 1996 with 2 other women</li>
+						<li>Co-founded web design and development company, YIKES, Inc.</li>
 						<li>Made a WordPress blog for my kid in 2006</li>
-						<li>Hooked ever since</li>
+						<li>Co-leader of make.wordpress.org/training</li>
+						<li>Core contributor to 4.0 and 4.1</li>
 					</ul>
 				</section>			
 				
@@ -123,9 +125,9 @@
 				<!-- Examples of basic html based slides -->
 				<section>
 					<h2>What are Themes?</h2>
-					<h3>Official description from WordPress.org</h3>
+					<h3>Description from the Codex</h3>
 					<blockquote>
-						Fundamentally, the WordPress Theme system is a way to 'skin' your weblog. Yet, it is more than just a 'skin.' Skinning your site implies that only the design is changed. WordPress Themes can provide much more control over the look and <em>presentation</em> of the material on your website.
+						WordPress Themes are files that work together to create the design and functionality of a WordPress site.
 					</blockquote>
 				</section>
 				
@@ -143,7 +145,7 @@
 					<h2>Themes are</h2>
 					<h3>Often Free</h3>
 					<p>
-						There are 2,616 (and counting) free themes in the official <a href="http://wordpress.org/themes/" target="_blank">WordPress Themes Directory</a>.
+						Right now there are over 3,020 free themes in the <a href="http://wordpress.org/themes/" target="_blank">WordPress Themes Directory</a>.
 					</p>
 				</section>
 				
@@ -152,7 +154,7 @@
 					<h2>Managing Themes</h2>
 					<h3>Appearance > Themes</h3>
 					<p>
-						WordPress currently comes with 3 themes: Twenty Twelve, Twenty Thirteen and Twenty Fourteen.
+						WordPress currently comes with 3 themes: Twenty Fifteen, Twenty Fourteen and Twenty Thirteen.
 					</p>
 					<p>
 						Under Appearance > Themes you can see all installed themes. The theme in use is labeled "Active."
@@ -164,8 +166,9 @@
 					<h2>Themes</h2>
 					<h3>Finding new themes</h3>
 					<ul>
-						<li>Searching under the "Install Themes" tab</li>
+						<li>Searching under the "Add New" tab</li>
 						<li>Browsing the <a href="http://wordpress.org/themes/" target="_blank">WordPress Themes Directory</a></li>
+						<li>Searching other theme resources on the web</li>
 					</ul>
 				</section>
 				
@@ -174,7 +177,7 @@
 					<h2>Themes</h2>
 					<h3>Installing themes</h3>
 					<ul>
-						<li>Install right from the "Install Themes" tab</li>
+						<li>Install right from the "Add New" tab</li>
 						<li>Download a theme zip file and install it via the "upload" link</li>
 						<li>Unzip the theme files and upload it via FTP to the<br /> <code>/wp-content/themes</code> folder</li>
 					</ul>
@@ -182,19 +185,10 @@
 				
 				<!-- Examples of basic html based slides -->
 				<section>
-					<h2>Themes</h2>
-					<h3>The Theme Customizer</h3>
-					<p>
-						Preview changes before you commit.
-					</p>
-				</section>
-				
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Meet Twenty Thirteen</h2>
+					<h2>Meet Twenty Fifteen</h2>
 					
 					<blockquote>
-						The 2013 theme for WordPress takes us back to the blog, featuring a full range of post formats, each displayed beautifully in their own unique way. Design details abound, starting with a vibrant color scheme and matching header images, beautiful typography and icons, and a flexible layout that looks great on any device, big or small.
+						<a href="https://codex.wordpress.org/Twenty_Fifteen" target="_blank">Twenty Fifteen</a> is the default theme for WordPress in 2015. It is super-clean, content-focused, and designed to bring a little more simplicity to our blogs. Its careful attention to typography, featuring the expertly-designed Noto font set in elegant and harmonious margins, makes it beautiful in multiple languages around the world.
 					</blockquote>
 				</section>
 				
@@ -208,9 +202,9 @@
 					</p>
 
 					<ul>
-						<li><strong>wp-admin -</strong> Back-end core files, <span class="red">don't touch these!</span></li>
+						<li><strong>wp-admin -</strong> WordPress core files, <span class="red">don't touch these!</span></li>
 						<li><strong>wp-content -</strong> Theme, plugin and uploaded files</li>
-						<li><strong>wp-includes -</strong> Front-end core files, <span class="red">don't touch these either!</span></li>
+						<li><strong>wp-includes -</strong> WordPress core files, <span class="red">don't touch these either!</span></li>
 					</ul>
 				</section>
 				
@@ -223,12 +217,13 @@
 						<li>wp-content</li>
 						<ul>
 							<li>plugins</li>
-							<li>themes</li>
+							<li>themes
 								<ul>
+									<li><span class="green">twentyfifteen</span></li>
 									<li><span class="green">twentyfourteen</span></li>
 									<li><span class="green">twentythirteen</span></li>
-									<li><span class="green">twentytwelve</span></li>
 								</ul>
+							</li>
 						</ul>
 					</ul>
 				</section>	
@@ -236,7 +231,7 @@
 				<!-- Examples of basic html based slides -->
 				<section>
 					<h2>Modifying Themes</h2>
-					<h3>Now I know where the theme files live I can just start hacking them, right?</h3>
+					<h3>Now I know where theme files live I can just edit them, right?</h3>
 					<p>
 						<strong>NO!</strong>
 					</p>
@@ -245,7 +240,7 @@
 				<!-- Examples of basic html based slides -->
 				<section>
 					<h2>#1 Rule of WordPress Development</h2>
-					<h3>Never EVER touch WordPress core code.</h3>
+					<h3>Never EVER edit WordPress core code.</h3>
 
 					<p>
 						This means do not edit:
@@ -264,7 +259,7 @@
 					
 					<ul>
 						<li>Stuff gets broken</li>
-						<li>Other plugins and themes may not work with your hacks</li>
+						<li>Other plugins and themes may not work with your changes</li>
 						<li>Updates wipe out your changes</li>
 					</ul>
 				</section>	
