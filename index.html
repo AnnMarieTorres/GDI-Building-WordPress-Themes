@@ -281,7 +281,7 @@
 					
 					<p><img src="images/folders.png" /></p>
 					
-					<h4>Your child theme's folder is a safe land where you can add css and php files without causing any permanent damage.</h4>
+					<h4>Your child theme's folder is a safe place where you can add css and php files without changing the parent theme.</h4>
 					
 					<p>
 						If you break something you can just hit undo or remove your file. All parent theme files will remain intact.
@@ -292,15 +292,15 @@
 				<section>
 					<h2>Making a Child Theme</h2>
 						
-					<h3>We'll make a child theme for Twenty Thirteen</h3>
+					<h3>We'll make a child theme of Twenty Fifteen</h3>
 				</section>	
 				
 				<!-- Examples of basic html based slides -->
 				<section>
 					<h2>What Your Child Theme Needs</h2>
 						
-					<h3>In order for your child theme to work it needs 2 things</h3>
-					<h4>Really, it only needs 1 thing, but 2 is cooler</h4>
+					<h3>In order for your child theme to work it needs 3 things</h3>
+					<h4>Really, it only needs 2 things, but 3 is better</h4>
 				</section>	
 				
 				<!-- Examples of basic html based slides -->
@@ -309,21 +309,19 @@
 						
 					<h3>Thing #1 - a style.css file</h3>
 					
-					<p>It tells WordPress to load the parent theme after your theme.</p>
+					<p>Define the general information for your theme.</p>
 					
 <pre>
 <code>
 /*
 Theme Name: [Your Theme Name]
-Theme URI: [Your URL]
-Description: The custom theme [Your Theme Name] using the parent theme Twenty Thirteen.
+Theme URI: [URL for your theme if you have one]
+Description: A description for your theme.
 Author: [You]
 Author URI: [Your URL]
-Template: twentythirteen
+Template: twentyfifteen
 Version: 1
 */
-
-@import url("../twentythirteen/style.css");
 
 </code>
 </pre>
@@ -334,17 +332,32 @@ Version: 1
 				<section>
 					<h2>What Your Child Theme Needs</h2>
 						
-					<h3>Thing #1 - a style.css file</h3>
+					<h3>Thing #2 - a functions.php file</h3>
 					
-					<p><img src="images/stylecss.png" /></p>
-				</section>	
-				
+					<p>Enqueue the parent and child theme stylesheets</p>
+					
+<pre>
+<code>
+&lt;?php
+
+add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
+function theme_enqueue_styles() {
+    wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+    wp_enqueue_style( 'child-style',
+        get_stylesheet_directory_uri() . '/style.css',
+        array('parent-style')
+    );
+}
+
+</code>
+</pre>						
+				</section>			
 				
 				<!-- Examples of basic html based slides -->
 				<section>
 					<h2>What Your Child Theme Needs</h2>
 						
-					<h3>Thing #2 - a screenshot</h3>
+					<h3>Thing #3 - a screenshot</h3>
 					
 					<p>This is the thumbnail image that shows up under <strong>Appearance > Themes</strong> in the WordPress admin.</p>
 					
@@ -356,9 +369,9 @@ Version: 1
 				<section>
 					<h2>What Your Child Theme Needs</h2>
 						
-					<h3>Thing #2 - a screenshot</h3>
+					<h3>Thing #3 - a screenshot</h3>
 					
-					<p>The recommended image size is 880×660. The screenshot will only be shown as 387×290, but the over double-sized image allows for high-resolution viewing on HiDPI displays.</p>
+					<p>The recommended image size is 880×660.</p>
 
 					<p>Create a 880px by 660px image file, name it “screenshot.png” and place it into the child theme’s folder.</p>
 				</section>	
@@ -366,12 +379,12 @@ Version: 1
 				
 				<!-- Examples of basic html based slides -->
 				<section>
-					<h2>Upload your theme</h2>
+					<h2>Add your child theme</h2>
 						
 					<ol>
 					<img src="images/mytheme.png" class="right" />
 						<li>Create a folder for your theme in <code>wp-content/themes</code> (no spaces)</li>
-						<li>Add your 2 theme files (style.css and screenshot) to your theme folder</li>
+						<li>Add your 3 theme files (style.css, functions.php and screenshot.png) to your theme folder</li>
 					</ol>	
 				</section>	
 				
@@ -381,8 +394,8 @@ Version: 1
 					<h2>Activate your theme</h2>
 					
 					<p>
-						After you've added your theme go check out Appearance > Themes in the WP admin.<br />
-						Your child theme is now on the list! Hit activate and now your theme will be in charge.
+						Now go to Appearance > Themes in the WP admin.<br />
+						Your child theme is now there!
 						<img src="images/awesome.png" />
 					</p>					
 				</section>	
@@ -394,7 +407,7 @@ Version: 1
 					<p><img src="images/folders2.png" /></p>
 					
 					<p>
-						The 2 files illustrate how a child theme's files affect the parent's files -- they either modify and add functionality to its identically named file, or completely overwrite it.
+						The 3 files illustrate how a child theme's files affect the parent's files -- they either override and add functionality to its identically named file, or completely replaces it.
 					<p>
 				</section>	
 				
@@ -404,10 +417,14 @@ Version: 1
 					<h3>Make a child theme</h3>
 
 					<ul>
-						<li>Create a child theme of Twenty Eleven, Twenty Twelve or Twenty Thirteen</li>
+						<li>Create a child theme of Twenty Fifteen</li>
 						<li>Make sure you create a screenshot</li>
 						<li>Activate your theme</li>
 					</ul>
+
+					<p>
+						<br /><small><a href="https://github.com/TheTracyL/twentyfifteen-child" target="_blank">If you get stuck</a></small>
+					</p>
 				</section>	
 				
 				<!-- Examples of basic html based slides -->
