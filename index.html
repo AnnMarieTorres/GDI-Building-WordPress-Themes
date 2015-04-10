@@ -15,6 +15,7 @@
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/gdilight.css" id="theme">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 		<!-- For syntax highlighting -->
 		<!-- light editor<link rel="stylesheet" href="lib/css/light.css">-->
@@ -88,11 +89,11 @@
 				
 				<section>
 					<h2>The rules</h2>
-					<h3>No question is stupid!</h3>
 					<ul>
+						<li>No Question is stupid</li>
 						<li>Raise your hand or speak up at any point and ask anything</li>
 						<li>Grab a TA whenever you need personalized help</li>
-						<li>"Learn and return"</li>
+						<li><a href="#"><i class="fa fa-info-circle"></i></a> = Link to more info</li>
 					</ul>
 				</section>
 				
@@ -129,6 +130,10 @@
 					<blockquote>
 						WordPress Themes are files that work together to create the design and functionality of a WordPress site.
 					</blockquote>
+
+					<p class="info-link">
+						<a href="https://codex.wordpress.org/Theme_Development" target="_blank"><i class="fa fa-info-circle"></i></a>
+					</p>
 				</section>
 				
 				<!-- Examples of basic html based slides -->
@@ -185,11 +190,7 @@
 				
 				<!-- Examples of basic html based slides -->
 				<section>
-					<h2>Meet Twenty Fifteen</h2>
-					
-					<blockquote>
-						<a href="https://codex.wordpress.org/Twenty_Fifteen" target="_blank">Twenty Fifteen</a> is the default theme for WordPress in 2015. It is super-clean, content-focused, and designed to bring a little more simplicity to our blogs. Its careful attention to typography, featuring the expertly-designed Noto font set in elegant and harmonious margins, makes it beautiful in multiple languages around the world.
-					</blockquote>
+					<h2>Let's take a closer look at a theme</h2>
 				</section>
 				
 				<!-- Examples of basic html based slides -->
@@ -230,8 +231,18 @@
 				
 				<!-- Examples of basic html based slides -->
 				<section>
+					<h2>The Files</h2>
+					<h3>The theme files</h3>
+
+					<p>
+						<img src="images/2013files.png" />						
+					</p>
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
 					<h2>Modifying Themes</h2>
-					<h3>Now I know where theme files live I can just edit them, right?</h3>
+					<h3>Now that I know where theme files live I can just edit them, right?</h3>
 					<p>
 						<strong>NO!</strong>
 					</p>
@@ -271,8 +282,12 @@
 					
 					<ul>
 						<li>Your child theme overrides the design elements you want changed and otherwise falls back to the parent.</li>
-						<li>Your child theme can also overrides or add functionality to the parent theme.</li>
+						<li>Your child theme can also override or add functionality to the parent theme.</li>
 					</ul>
+
+					<p class="info-link">
+						<a href="https://codex.wordpress.org/Child_Themes" target="_blank"><i class="fa fa-info-circle"></i></a>
+					</p>
 				</section>	
 				
 				<!-- Examples of basic html based slides -->
@@ -292,7 +307,7 @@
 				<section>
 					<h2>Making a Child Theme</h2>
 						
-					<h3>We'll make a child theme of Twenty Fifteen</h3>
+					<h3>We'll make a child theme of Twenty Thirteen</h3>
 				</section>	
 				
 				<!-- Examples of basic html based slides -->
@@ -312,8 +327,7 @@
 					<p>Define the general information for your theme.</p>
 					
 <pre>
-<code>
-/*
+<code>/*
 Theme Name: [Your Theme Name]
 Theme URI: [URL for your theme if you have one]
 Description: A description for your theme.
@@ -321,10 +335,19 @@ Author: [You]
 Author URI: [Your URL]
 Template: twentythirteen
 Version: 1
-*/
-
-</code>
-</pre>
+*/</code></pre>
+					
+				</section>	
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>What Your Child Theme Needs</h2>
+						
+					<h3>Thing #1 - a style.css file</h3>
+					
+					<p>Define the general information for your theme.</p>
+					
+					<img src="images/stylecss.png" alt="">
 					
 				</section>	
 				
@@ -337,8 +360,7 @@ Version: 1
 					<p>Enqueue the parent and child theme stylesheets</p>
 					
 <pre>
-<code>
-&lt;?php
+<code>&lt;?php
 
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 function theme_enqueue_styles() {
@@ -347,10 +369,7 @@ function theme_enqueue_styles() {
         get_stylesheet_directory_uri() . '/style.css',
         array('parent-style')
     );
-}
-
-</code>
-</pre>						
+}</code></pre>						
 				</section>			
 				
 				<!-- Examples of basic html based slides -->
@@ -359,7 +378,7 @@ function theme_enqueue_styles() {
 						
 					<h3>Thing #3 - a screenshot</h3>
 					
-					<p>This is the thumbnail image that shows up under <strong>Appearance > Themes</strong> in the WordPress admin.</p>
+					<p>This is the thumbnail image that represents each theme in <strong>Appearance > Themes</strong> in the WordPress admin.</p>
 					
 					<p><img src="images/screenshotpic.png" /></p>
 				</section>	
@@ -371,8 +390,6 @@ function theme_enqueue_styles() {
 						
 					<h3>Thing #3 - a screenshot</h3>
 					
-					<p>The recommended image size is 880×660.</p>
-
 					<p>Create a 880px by 660px image file, name it “screenshot.png” and place it into the child theme’s folder.</p>
 				</section>	
 				
@@ -394,7 +411,7 @@ function theme_enqueue_styles() {
 					<h2>Activate your theme</h2>
 					
 					<p>
-						Now go to Appearance > Themes in the WP admin.<br />
+						Go to Appearance > Themes in the WP admin.<br />
 						Your child theme is now there!
 						<img src="images/awesome.png" />
 					</p>					
@@ -453,11 +470,10 @@ function theme_enqueue_styles() {
 <pre>
 <code>
 .site-title {
-    font-size: 50px;
+    font-size: 40px;
 }
 
-</code>
-</pre>
+</code></pre>
 				</section>	
 				
 				<!-- Examples of basic html based slides -->
@@ -473,17 +489,21 @@ function theme_enqueue_styles() {
 				<!-- Examples of basic html based slides -->
 				<section>
 					<h2>Templates</h2>
-					<h3>Official description from WordPress.org</h3>
+					<h3>From the Codex</h3>
 					<blockquote>
-						Templates are the files which control how your WordPress site will be displayed on the Web.
+						Template files are the building blocks of your WordPress site. They fit together like the pieces of a puzzle to generate the web pages on your site.
 					</blockquote>
+
+					<p class="info-link">
+						<a href="https://codex.wordpress.org/Stepping_Into_Templates" target="_blank"><i class="fa fa-info-circle"></i></a>
+					</p>
 				</section>
 				
 				<!-- Examples of basic html based slides -->
 				<section>
 					<h2>Templates</h2>
 					<ul>
-						<li>Take the data from the database and display it in a web browser</li>
+						<li>Assemble HTML, PHP and content from the database to display pages in a web browser</li>
 						<li>Determines how a webpage or part of a webpage looks</li>
 					</ul>
 				</section>
@@ -533,8 +553,7 @@ function theme_enqueue_styles() {
 	&lt;?php do_action( 'twentythirteen_credits' ); ?&gt;
 	&lt;a href="&lt;?php echo esc_url( __( 'http://wordpress.org/', 'twentythirteen' ) ); ?&gt;" title="&lt;?php esc_attr_e( 'Semantic Personal Publishing Platform', 'twentythirteen' ); ?&gt;"&gt;&lt;?php printf( __( 'Proudly powered by %s', 'twentythirteen' ), 'WordPress' ); ?&gt;&lt;/a&gt;
 &lt;/div?&gt;&lt;!-- .site-info --&gt;
-</code>
-</pre>
+</code></pre>
 				</section>	
 				
 				<!-- Examples of basic html based slides -->
@@ -565,8 +584,7 @@ Template Name: [Type your template name here]
 */
 ?&gt;
 
-</code>
-</pre>
+</code></pre>
 
 					<h4>Second, at least these 2 include tags</h4>
 <pre>
@@ -575,8 +593,7 @@ Template Name: [Type your template name here]
 
 &lt;?php get_footer(); ?&gt;
 
-</code>
-</pre>
+</code></pre>
 					
 				</section>	
 				
@@ -640,8 +657,7 @@ Template Name: [Type your template name here]
 &lt;?get_sidebar(); ?&gt;
 &lt;?comments_template(); ?&gt;
 
-</code>
-</pre>
+</code></pre>
 
 <p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Include_Tags" target="_blank">Include Tags Page</a></p>
 					
@@ -676,8 +692,7 @@ Template Name: [Type your template name here]
 &lt;?the_excerpt(); ?&gt;
 &lt;?get_the_post_thumbnail(); ?&gt;
 
-</code>
-</pre>
+</code></pre>
 
 <p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference" target="_blank">Function Reference</a></p>
 					
@@ -701,8 +716,7 @@ Template Name: [Type your template name here]
 <code>
 Copyright &copy; &lt;?php echo date('Y'); ?&gt; &lt;a href="&lt;?php echo home_url( '/' ); ?&gt;"&gt;&lt;?php bloginfo( 'name' ); ?&gt;&lt;/a&gt;
 
-</code>
-</pre>
+</code></pre>
 				</section>	
 				
 				<!-- Examples of basic html based slides -->
@@ -718,8 +732,7 @@ is_single()
 is_page()
 is_category()
 
-</code>
-</pre>
+</code></pre>
 
 <p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Conditional_Tags" target="_blank">Conditional Tags Page</a> and this blog post on <a href="http://www.chipbennett.net/2013/09/14/home-page-and-front-page-and-templates-oh-my/" target="_blank"><code>is_front_page()</code> vs. <code>is_home()</code></a></p>
 					
@@ -742,12 +755,11 @@ is_category()
 <pre>
 <code>
 &lt;?php
-if(is_front_page()){
-	echo "&lt;p&gt;Web design by [your name here]&lt;/p&gt;";
-}
+	if(is_front_page()){
+		echo "&lt;p&gt;Web design by [your name here]&lt;/p&gt;";
+	}
 ?&gt;
-</code>
-</pre>
+</code></pre>
 				</section>				
 				
 				<!-- Examples of basic html based slides -->
@@ -770,8 +782,8 @@ if(is_front_page()){
 		&lt;h1&gt;THIS IS THE HOME PAGE&lt;/h1&gt;
 	&lt;/div&gt;
 &lt;?php } ?&gt;
-</code>
-</pre>
+
+</code></pre>
 				</section>	
 				
 				<!-- Examples of basic html based slides -->
@@ -805,10 +817,11 @@ if(is_front_page()){
 					<h2>Handy Template Tags</h2>
 					
 					<h3>get_template_part</h3>
-<pre>
-	<code>&lt;?php get_template_part( 'content', 'none' ); ?&gt;</code>
 
-</pre>
+<pre><code>
+&lt;?php get_template_part( 'content', 'none' ); ?&gt;
+
+</code></pre>
 				<p>
 					Will load a template file named content-none.php
 				</p>
@@ -820,10 +833,10 @@ if(is_front_page()){
 					
 					<h3>the_post_thumbnail</h3>
 					
-<pre>
-	<code>&lt;?php the_post_thumbnail('medium'); ?&gt;</code>
+<pre><code>
+&lt;?php the_post_thumbnail('medium'); ?&gt;
 
-</pre>					
+</code></pre>					
 					<p>
 						This will create an <code>img</code> tag for the medium sized version of a post or page's "Featured Image"
 					</p>
@@ -849,8 +862,7 @@ if(is_front_page()){
 &lt;?php the_post_thumbnail('full'); ?&gt;
 &lt;?php the_post_thumbnail( array(250,100) );  ?&gt;
 
-</code>
-</pre>			
+</code></pre>			
 				</section>	
 				
 				
@@ -886,10 +898,14 @@ VS.
 				<!-- Examples of basic html based slides -->
 				<section>
 					<h3>The WordPress Template Hierarchy</h3>
-					<h4><a href="http://codex.wordpress.org/Template_Hierarchy#The_General_Idea" target="_blank">codex.wordpress.org says:</a></h4>
+					<h4>codex.wordpress.org says:</h4>
 					<blockquote>
 						WordPress uses the Query String &mdash; information contained within each link on your web site &mdash; to decide which template or set of templates will be used to display the page.
 					</blockquote>
+
+					<p class="info-link">
+						<a href="http://codex.wordpress.org/Template_Hierarchy#The_General_Idea" target="_blank"><i class="fa fa-info-circle"></i></a>
+					</p>
 				</section>
 
 				<section>
@@ -905,7 +921,9 @@ VS.
 				</section>
 				
 				<section>					
-					<img src="images/Template_Hierarchy.png" />
+					<a href="images/wp-template-hierarchy.jpg" target="_blank">
+						<img src="images/wp-template-hierarchy.jpg" />
+					</a>
 				</section>
 
 				<section>
