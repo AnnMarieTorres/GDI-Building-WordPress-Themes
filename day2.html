@@ -265,7 +265,13 @@ Order posts in alphabetical order by title:
 					<h4>$args</h4>
 Put multiple parameters in an array: 
 <pre><code>&lt;!-- // The Query --&gt;
-&lt;?php $myloop = new WP_Query( array( 'cat' => 'cooking', 'posts_per_page' => '5', 'orderby' => 'date', 'order' => 'DESC' ) ); ?&gt;
+&lt;?php $myloop = new WP_Query( array( 
+	'cat' => 'cooking', 
+	'posts_per_page' => '5', 
+	'orderby' => 'date', 
+	'order' => 'DESC' 
+	) ); 
+?&gt;
 
 &lt;ul&gt;
 &lt;!-- // The Loop --&gt;
@@ -398,8 +404,7 @@ if ( false === ( $lastpostsloop = get_transient( 'home_lastposts_loop' ) ) ) {
 // Load a file from the inc folder
 require_once 'inc/my-file.php';
 
-</code>
-</pre>
+</code></pre>
 				</section>	
 				
 				<!-- Examples of basic html based slides -->
@@ -412,7 +417,7 @@ require_once 'inc/my-file.php';
 						It's important to keep theme files organized.
 					
 					<ul>
-						<li><strong>awesome</strong> (theme folder)
+						<li><strong>twentythirteen-child</strong> (theme folder)
 							<ul>
 								<li><strong>css</strong> (any theme css you want to keep out of style.css)</li>
 								<li><strong>images</strong> (all the images used in your theme)</li>
@@ -507,15 +512,9 @@ require_once 'inc/my-file.php';
 				
 				<!-- Examples of basic html based slides -->
 				<section>
-					<h2>Adding functionality</h2>
-						
-					<h4>Hooks, Action and Filters</h4>
-					
-					<h4><a href="http://wordpress.tv/2013/07/31/tracy-levesque-what-you-dont-know-you-can-do-wordpress-development-for-absolutely-everyone/" target="_blank">Visual Demo of Hooks, Actions and Filters</a></h4>
-					<p>
-						From my talk at WordCamp San Francisco.<br />
-						19 minutes in.
-					</p>
+					<h4>Visual Demo of Hooks, Actions and Filters</h4>
+
+					<iframe width="1280" height="620" src="https://www.youtube.com/embed/E07IPqKmsWA" frameborder="0" allowfullscreen></iframe>
 				</section>	
 				
 				<!-- Examples of basic html based slides -->
@@ -545,8 +544,7 @@ require_once 'inc/my-file.php';
 add_image_size( 'my-img', 400, 400 ); // soft proportional crop mode
 add_image_size( 'other-img', 200, 269, true ); // hard crop mode
 
-</code>
-</pre>
+</code></pre>
 					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/add_image_size" target="_blank">add image size</a></p>
 				</section>		
 				
@@ -563,8 +561,7 @@ add_image_size( 'other-img', 200, 269, true ); // hard crop mode
 <code>				
 &lt;?php echo get_the_post_thumbnail($page->ID, 'my-img'); ?&gt;
 
-</code>
-</pre>
+</code></pre>
 				</section>		
 				
 				<!-- Examples of basic html based slides -->
@@ -578,7 +575,7 @@ add_image_size( 'other-img', 200, 269, true ); // hard crop mode
 					</p>
 					
 					<p>
-						You can use the handy <a href="http://wordpress.org/plugins/regenerate-thumbnails/" target="_blank"><strong>Regenerate Thumbnails</strong></a> plugin to create the custom sizes of your previously uploaded images.
+						You can use the handy <a href="https://wordpress.org/plugins/force-regenerate-thumbnails/" target="_blank"><strong>Force Regenerate Thumbnails</strong></a> plugin to create the custom sizes of your previously uploaded images.
 					</p>
 				</section>	
 				
@@ -603,7 +600,7 @@ add_image_size( 'other-img', 200, 269, true ); // hard crop mode
 					<h4>register_nav_menus</h4>
 					
 					<p> 
-						Use <code>register_nav_menus</code> to register your menus.
+						Use <code>register_nav_menus</code> in functions.php to register your menus.
 					</p>
 <pre>
 <code>	
@@ -611,8 +608,7 @@ register_nav_menus( array(
 	'footer-nav' => 'Footer Menu',
 ) );
 
-</code>
-</pre>
+</code></pre>
 				</section>		
 				
 				<!-- Examples of basic html based slides -->
@@ -628,8 +624,7 @@ register_nav_menus( array(
 <code>	
 &lt;?php wp_nav_menu( array( 'theme_location' => 'footer-nav' ) ); ?&gt;
 
-</code>
-</pre>
+</code></pre>
 					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/wp_nav_menu" target="_blank">wp nav menu</a></p>
 				</section>		
 				
@@ -646,8 +641,7 @@ register_nav_menus( array(
 <code>	
 &lt;?php wp_nav_menu( array('menu' => '2' )); ?&gt;
 
-</code>
-</pre>
+</code></pre>
 				</section>	
 				
 				
@@ -658,7 +652,6 @@ register_nav_menus( array(
 					<h4>register_sidebar</h4>
 					
 					<p>
-						<img src="images/widgets.png" class="right" />
 						Most themes come with specific widgetized areas -- locations in the sidebar, footer, header, etc. that you can drag and drop widgets into. You can use <code>register_sidebar</code> to create widgetized areas in your theme.
 					</p>
 					
@@ -686,8 +679,7 @@ register_sidebar(array(
 	'after_title' =&gt; '&lt;/h4&gt;',
 ));
 
-</code>
-</pre>
+</code></pre>
 				</section>		
 				
 				<!-- Examples of basic html based slides -->
@@ -703,8 +695,7 @@ register_sidebar(array(
 <code>	
 &lt;?php dynamic_sidebar( 'headerwidget' ); ?&gt;
 
-</code>
-</pre>
+</code></pre>
 					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/dynamic_sidebar" target="_blank">dynamic sidebar</a></p>
 				</section>		
 				
@@ -727,8 +718,7 @@ if(is_page( 'contact' )){
 	dynamic_sidebar( 'contactsidebar' );
 }
 	
-</code>
-</pre>
+</code></pre>
 					<p>View <a href="https://github.com/TheTracyL/GDI-Code-Samples/blob/master/sidebar.php" target="_blank">the code to make this work for Twentythirteen</a></p>
 				</section>	
 				
@@ -781,14 +771,12 @@ if(is_page( 'contact' )){
 <pre>
 <code>/* load my widget */
 require_once 'inc/my-widget.php';
-</code>
-</pre>
+</code></pre>
 
 "Off"
 <pre>
 <code>/* load my widget */
-//require_once 'inc/my-widget.php';</code>
-</pre>
+//require_once 'inc/my-widget.php';</code></pre>
 				</section>		
 
 				<!-- Examples of basic html based slides -->
@@ -801,9 +789,7 @@ require_once 'inc/my-widget.php';
 					</p>
 					
 					<p><br /><a href="https://github.com/TheTracyL/GDI-Widget-Example/blob/master/my-widget.php" target="_blank">View the code on Github</a></p>
-				</section>		
-
-				
+				</section>	
 				
 				<!-- Examples of basic html based slides -->
 				<section>
@@ -815,270 +801,18 @@ require_once 'inc/my-widget.php';
 					</p>
 					
 					<p><br /><a href="https://github.com/TheTracyL/GDI-Widget-Example/blob/master/my-widget.php" target="_blank">View the code on Github</a></p>
-				</section>	
-				
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Custom Post Types</h2>
-					<h3>Official description from WordPress.org</h3>
-					<blockquote>
-						A Custom Type is a Post Type you define.
-					</blockquote>
-					
-					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Post_Types" target="_blank">Post Types</a></p>
-				</section>	
-				
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Custom Post Types</h2>
-					<h4>WordPress comes with 2 major Post Types:</h4>
-					
-					<p>
-						<img src="images/pages-posts.png" />
-					</p>
-					
-					<p>
-						<strong>They both</strong>
-						<ul>
-							<li>Are unique content types with their own sets of fields</li>
-							<li>Have their own admin area on the WordPress admin</li>
-							<li>Let you add content in a repeating and consistent manner</li>
-							<li>Have a consistent layout on the front-end</li>
-						</ul>
-					</p>
-					
-				</section>	
-				
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Custom Post Types</h2>
-					<h4>Create your own Post Types!</h4>
-					
-					<p>
-						You can create your own post type that has its own fields, admin in the back-end and layout on the front-end. This is perfect for any type of repeating content you want to manage easily from the WordPress admin.
-					</p>
-					
-					<p>
-						<img src="images/staff.png" />
-						<img src="images/recipes.png" />
-						<img src="images/products.png" />	
-						<img src="images/jobs.png" />	
-					</p>
-					
-				</section>		
-				
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Custom Post Types</h2>
-					<h4>Custom Taxonomies</h4>
-					
-					<p>
-						Custom Post Types can also have their own <strong>custom taxonomies</strong>. That just means they can have their own ways to group posts together.
-					</p>
-					<p>
-						<strong>Categories</strong> and <strong>Tags</strong> are taxonomies for Posts and Pages.
-					</p>
-					<p>
-						<img src="images/cat-tag.png" />
-					</p>
-				</section>		
-				
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Custom Post Types</h2>
-					<h4>Custom Taxonomies</h4>
-					
-					<p>
-						If we made a custom post type "Movies."
-					</p>
-					<p>
-						<img src="images/movies.png" />
-					</p>
-					<p>
-						We could make custom taxonomies this post type
-					</p>
-					<p>
-						<img src="images/custom-tax.png" />
-					</p>
-				</section>		
-				
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Custom Post Types</h2>
-					<h4>Custom Taxonomies</h4>
-					
-					<p>
-						<img src="images/custom-tax.png" />
-					</p>
-					
-					<p>
-						Using <a href="http://codex.wordpress.org/Template_Hierarchy#The_General_Idea" target="_blank">The WordPress Template Hierarchy</a> we can make templates for the archive pages for these taxonomies.
-					</p>
-				</section>	
-				
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Custom Post Types</h2>			
-					
-					<p>
-						Front end and admin tour of the custom post type "Kittens."
-					</p>
-					
-					<p><br />
-					You can also watch a video of my presentation: <a href="http://wordpress.tv/2013/04/12/tracy-levesque-custom-post-types-for-right-brained-folks/" target="_blank">Custom Post Types for Right-Brained folks on WordPress.tv</a>
-					</p>
-					
-					
-				</section>	
-					
-				
-				<section>
-				
-					<h2>Creating Custom Post Types</h2>
-					
-					<p>
-						Note: Just like with widgets, CPT code should be put in its own file. You can put a line of code in <code>functions.php</code> to load the file. 
-					</p>
-
-<pre>
-<code>	
-require_once 'inc/kittens.php';
-
-</code>
-</pre>
-				</section>	
-				
-
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Creating Custom Post Types</h2>
-						
-					<h4>Step One <code>inc/kittens.php</code></h4>
-					
-					<p>
-						<code>inc/kittens.php</code> is the file that defines all the details for our Custom Post Type and Custom Taxonomies.
-					</p>
-					
-					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/register_post_type" target="_blank">register post type</a></p>
-				</section>	
-
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Creating Custom Post Types</h2>
-						
-					<h4>Step One <code>inc/kittens.php</code></h4>
-					<p>
-						Register your custom post type and custom taxonomies. We'll go through all the code for our Kittens CPT
-					</p>
-					
-					<p><br /><a href="https://github.com/TheTracyL/CPTs-For-Designers/blob/master/kittens/inc/kittens.php" target="_blank">View the code on Github</a></p>
-				</section>			
-
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Creating Custom Post Types</h2>
-						
-					<h4>Note</h4>
-					<p>
-						<strong>Naming Best Practices</strong>
-						While it's convenient to name your custom post type a simple name like "product," it is better if you prefix your name with a short "namespace" that identifies your theme.
-					</p>
-					<p>
-						Also CPT names have a max. of 20 characters and can not contain capital letters or spaces.
-					</p>
-				</section>		
-				
-
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Creating Custom Post Types</h2>
-						
-					<h4>Step Two <code>page-kittens.php</code></h4>
-					<p>
-						Make the template file that contains the loop for our Kittens CPT. We are going to use our template making and WP_Query skills to make a page to display our kittens.
-					</p>
-					
-					<p><br /><a href="https://github.com/TheTracyL/CPTs-For-Designers/blob/master/kittens/page-kittens.php" target="_blank">View the code on Github</a></p>
-				</section>			
-				
-
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Creating Custom Post Types</h2>
-						
-					<h4>Step Three <code>single-wcp_kittens.php</code></h4>
-					<p>
-						Remember The <a href="http://codex.wordpress.org/images/1/18/Template_Hierarchy.png" target="_blank">WordPress Template Hierarchy</a>?<br />
-						It works for CPTs, too. 
-					</p>
-					
-					<p>
-						<img src="images/cpt-wth.png" />
-					</p>
-				</section>				
-				
-
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Creating Custom Post Types</h2>
-						
-					<h4>Step Three <code>single-wcp_kittens.php</code></h4>
-					<p>
-						Make the template file for a single Kitten post. We'll throw in a custom thumbnail.
-					</p>
-					
-					<p><br /><a href="https://github.com/TheTracyL/CPTs-For-Designers/blob/master/kittens/single-wcp_kittens.php" target="_blank">View the code on Github</a></p>
-				</section>					
-				
-
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Creating Custom Post Types</h2>
-					<h3>Tip!</h3>
-						
-					<h4>Hey, I'm getting a 404 error when I view a single kitten</h4>
-					<p>
-						Have you named everything correctly and you're getting a 404 when you click on your CPT? Before Googling, reading support forums and going out of your mind refresh your permalinks. That will do the trick.
-					</p>
-				</section>		
-				
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Creating Custom Post Types</h2>
-						
-					<h4>Making templates for our custom taxonomies</h4>
-					<p>
-						The <a href="http://codex.wordpress.org/images/1/18/Template_Hierarchy.png" target="_blank">WTH</a> also works for custom taxonomies.
-					</p>
-					
-					<p>
-						<img src="images/tax-wth.png" />
-					</p>
-				</section>			
-				
-				<!-- Examples of basic html based slides -->
-				<section>
-					<h2>Creating Custom Post Types</h2>
-						
-					<h4>Custom taxonomy templates: <code>taxonomy.php</code> and <code>taxonomy-custom_cat_color.php</code></h4>
-					<p>
-						Make a template for all custom taxonomy archive pages and for a specific term.
-					</p>
-					
-					<p><br />View the code on Github: <a href="https://github.com/TheTracyL/CPTs-For-Designers/blob/master/kittens/taxonomy.php" target="_blank">taxonomy.php</a> and <a href="https://github.com/TheTracyL/CPTs-For-Designers/blob/master/kittens/taxonomy-custom_cat_color.php" target="_blank">taxonomy-custom_cat_color.php</a></p>
-				</section>					
-
-
+				</section>
 				
 				<!-- Examples of basic html based slides -->
 				<section>
 					<h2>Resources</h2>
 
 					<ul>
+						<li><strong><a href="http://www.lynda.com/articles/build-wordpress-themes-scratch-lynda-com">Build WordPress Themes from Scratch with lynda.com</a></strong> By Morten Rand-Hendriksen</li>
+						<li><strong><a href="http://code.tutsplus.com/series/making-the-perfect-wordpress-theme--wp-33987">Making the Perfect WordPress Theme</a></strong></li>
 						<li><strong><a href="http://wp-snippets.com/" target="_blank">WP Snippets</a></strong> - WordPress Code Snippets</li>
 						<li><strong><a href="http://wpmu.org/create-a-wordpress-widget/" target="_blank">How to Create a WordPress Widget</a></strong> - 4 Killer Tutorials You Should Read</li>
-						<li><strong><a href="http://melchoyce.github.io/dashicons/" target="_blank">Dashicons</a></strong> - Dashicons is the official icon font of the WordPress admin as of 3.8. Use them for your CPTs</li>
-						<li><strong><a href="http://www.weareo3.com/wordpress-custom-post-type-generator/" target="_blank">WordPress Custom Post Type Generator</a></strong> - A handy tool to help you create a Custom Post Type code</li>
+						<li><strong><a href="https://pippinsplugins.com/learn/">Pippin's Plugins</a></strong> - Learn Plugin Development</li>
 					</ul>
 				</section>	
 				
