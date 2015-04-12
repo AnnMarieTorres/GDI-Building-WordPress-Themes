@@ -67,10 +67,9 @@
 						<li>Learn about hooks, actions and filters</li>
 						<li>Learn some handy WordPress functions</li>
 						<li>Learn how to make widgetized areas and widgets</li>
-						<li>Learn about custom post types (if there's time)</li>
 					</ul>
 					
-					<h3>And</h3>
+					<h3><br />And</h3>
 					<ul>
 						<li>Take a 15 minute break at 3pm</li>
 					</ul>
@@ -266,8 +265,8 @@ Order posts in alphabetical order by title:
 Put multiple parameters in an array: 
 <pre><code>&lt;!-- // The Query --&gt;
 &lt;?php $myloop = new WP_Query( array( 
-	'cat' => 'cooking', 
-	'posts_per_page' => '5', 
+	'cat' => 'cats', 
+	'posts_per_page' => '4', 
 	'orderby' => 'date', 
 	'order' => 'DESC' 
 	) ); 
@@ -279,7 +278,7 @@ Put multiple parameters in an array:
 	&lt;li&gt;
 		&lt;h2&gt;&lt;?php the_title(); ?&gt;&lt;/h2&gt;
 		
-		&lt;p&gt;&lt;?php the_content(); ?&gt;&lt;/p&gt;
+		&lt;p&gt;&lt;?php the_excerpt(); ?&gt;&lt;/p&gt;
 	&lt;/li&gt;
 &lt;?php endwhile;  ?&gt;	
 &lt;!-- // The end of The Loop --&gt;
@@ -350,8 +349,9 @@ if ( false === ( $lastpostsloop = get_transient( 'home_lastposts_loop' ) ) ) {
 
 					<ul>
 						<li>Make a Home Page Template</li>
-						<li>Add a content box</li>
+						<li>Add a div for your latest posts</li>
 						<li>Create a WP_Query loop to show the latest 5 posts</li>
+						<li>Experiment with different parameters (<a href="http://codex.wordpress.org/Class_Reference/WP_Query" target="_blank">here's a link to all of them</a>)</li>
 					</ul>
 				</section>	
 				
@@ -362,7 +362,7 @@ if ( false === ( $lastpostsloop = get_transient( 'home_lastposts_loop' ) ) ) {
 					<h4><code>functions.php</code></h4>
 					
 					<p>
-						functions.php is a special file that acts like a plugin to add functionality to your theme. If you're using a child theme you can use it modify and add functionality to the parent theme.
+						functions.php is a special file that acts like a plugin to add functionality to your theme. 
 					</p>
 					
 					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Functions_File_Explained" target="_blank">Functions File Explained</a></p>
@@ -379,14 +379,18 @@ if ( false === ( $lastpostsloop = get_transient( 'home_lastposts_loop' ) ) ) {
 					</p>
 
 <pre><code>&lt;?php
-/**
- * My theme functions and definitions
- */
- 
- (all your functions go here)
+add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
+function theme_enqueue_styles() {
+    wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+    wp_enqueue_style( 'child-style',
+        get_stylesheet_directory_uri() . '/style.css',
+        array('parent-style')
+    );
+}
 
-?&gt;
-</code></pre>
+ (all of your additional functions go here)
+
+</code></pre>	
 				</section>	
 				
 				<!-- Examples of basic html based slides -->
@@ -543,6 +547,7 @@ require_once 'inc/my-file.php';
 <code>				
 add_image_size( 'my-img', 400, 400 ); // soft proportional crop mode
 add_image_size( 'other-img', 200, 269, true ); // hard crop mode
+add_image_size( 'custom-size', 220, 220, array( 'left', 'top' ) ); // Hard crop left top
 
 </code></pre>
 					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/add_image_size" target="_blank">add image size</a></p>
@@ -577,8 +582,19 @@ add_image_size( 'other-img', 200, 269, true ); // hard crop mode
 					<p>
 						You can use the handy <a href="https://wordpress.org/plugins/force-regenerate-thumbnails/" target="_blank"><strong>Force Regenerate Thumbnails</strong></a> plugin to create the custom sizes of your previously uploaded images.
 					</p>
-				</section>	
+				</section>				
 				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Exercise time!</h2>
+					<h3>Add a custom thumbnail to your theme!</h3>
+
+					<ul>
+						<li>Register a custom thumbnail size</li>
+						<li>Use your custom thumbnail size in your recent post loop on your home page.</li>
+					</ul>
+				</section>	
+
 				<!-- Examples of basic html based slides -->
 				<section>
 					<h2>Adding functionality</h2>
@@ -586,8 +602,10 @@ add_image_size( 'other-img', 200, 269, true ); // hard crop mode
 					<h4>register_nav_menus</h4>
 					
 					<p> 
-						<img src="images/menus.png" class="right" />
 						If you have used custom menus in WordPress sites before (Appearance > Menus in the admin) you know a theme can have specific menu locations.
+					</p>
+					<p>
+						<img src="images/menus.png" />
 					</p>
 					
 					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/register_nav_menus" target="_blank">register nav menus</a></p>
@@ -626,6 +644,23 @@ register_nav_menus( array(
 
 </code></pre>
 					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/wp_nav_menu" target="_blank">wp nav menu</a></p>
+				</section>			
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Adding functionality</h2>
+						
+					<h4>wp_nav_menu</h4>
+					
+					<p> 
+						Add fallback_cb to make sure no menu displays if there are no custom menus assigned to that location.
+					</p> 
+<pre>
+<code>	
+&lt;?php wp_nav_menu( array( 'theme_location' => 'footer-nav', 'fallback_cb' => false ) ); ?&gt;
+
+</code></pre>
+					<p><br />Check out the WordPress Codex <a href="http://codex.wordpress.org/Function_Reference/wp_nav_menu" target="_blank">wp nav menu</a></p>
 				</section>		
 				
 				<!-- Examples of basic html based slides -->
@@ -642,6 +677,18 @@ register_nav_menus( array(
 &lt;?php wp_nav_menu( array('menu' => '2' )); ?&gt;
 
 </code></pre>
+				</section>					
+				
+				<!-- Examples of basic html based slides -->
+				<section>
+					<h2>Exercise time!</h2>
+					<h3>Register a Nav Menu</h3>
+
+					<ul>
+						<li>Register a nav menu (suggestion: footer-nav)</li>
+						<li>Add the wp_nav_menu tag to load that menu in the footer</li>
+						<li>Create a new menu in Appearance > Menus and assign it to that Theme location</li>
+					</ul>
 				</section>	
 				
 				
@@ -725,22 +772,17 @@ if(is_page( 'contact' )){
 				<!-- Examples of basic html based slides -->
 				<section>
 					<h2>Exercise time!</h2>
-					<h3>Add some functionality to your theme!</h3>
+					<h3>Add some sidebars to your theme!</h3>
 
 					<p>
 						Try to use any of the functions we learned today.
 						<ul>
-							<li>add_image_size</li>
-							<li>get_the_post_thumbnail</li>
-							<li>register_nav_menus</li>
-						</ul>
-						<ul>
-							<li>wp_nav_menu</li>
-							<li>register_sidebar</li>
-							<li>dynamic_sidebar</li>
+							<li>Register a sidebar - try making one in the header</li>
+							<li>Add the dynamic_sidebar tag to the header to display the sidebar</li>
+							<li>Try adding widgets to it and see what happens</li>
 						</ul>
 					</p>
-					<p><br />Try to do it yourself (if you're stuck <a href="https://github.com/TheTracyL/GDI-Code-Samples/blob/master/functions.php" target="_blank">download functions.php off Github</a>).</p>
+					<p><br />Try to do it yourself (if you're stuck <a href="https://github.com/TheTracyL/GDI-Code-Samples/blob/master/functions.php" target="_blank">view functions.php on Github</a>).</p>
 				</section>	
 				
 				
