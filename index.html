@@ -653,9 +653,9 @@ Template Name: [Type your template name here]
 					<h4>Used in a template to execute the HTML and PHP found in another template</h4>
 <pre>
 <code>
-&lt;?get_search_form(); ?&gt;
-&lt;?get_sidebar(); ?&gt;
-&lt;?comments_template(); ?&gt;
+&lt;?php get_search_form(); ?&gt;
+&lt;?php get_sidebar(); ?&gt;
+&lt;?php comments_template(); ?&gt;
 
 </code></pre>
 
@@ -674,7 +674,7 @@ Template Name: [Type your template name here]
 
 					<ol>
 						<li>Open <code>header.php</code> in the twentythirteen folder and save a copy into your theme's folder.</li>
-						<li>Add <code>&lt;?get_search_form(); ?&gt;</code> to the header just below the site description</li>
+						<li>Add <code>&lt;?php get_search_form(); ?&gt;</code> to the header just below the site description</li>
 					</ol>
 
 				</section>	
@@ -686,11 +686,11 @@ Template Name: [Type your template name here]
 					<h4>Used to display useful WordPress PHP functions</h4>
 <pre>
 <code>
-&lt;?the_title(); ?&gt;
-&lt;?the_content(); ?&gt;
-&lt;?the_permalink(); ?&gt;
-&lt;?the_excerpt(); ?&gt;
-&lt;?get_the_post_thumbnail(); ?&gt;
+&lt;?php the_title(); ?&gt;
+&lt;?php the_content(); ?&gt;
+&lt;?php the_permalink(); ?&gt;
+&lt;?php the_excerpt(); ?&gt;
+&lt;?php get_the_post_thumbnail(); ?&gt;
 
 </code></pre>
 
